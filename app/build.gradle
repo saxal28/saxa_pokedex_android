@@ -35,6 +35,11 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -58,4 +63,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
     implementation "androidx.activity:activity-ktx:1.1.0"
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
+    implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
 }

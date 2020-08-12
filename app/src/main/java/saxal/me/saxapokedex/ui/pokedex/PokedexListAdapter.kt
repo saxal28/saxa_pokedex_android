@@ -3,15 +3,11 @@ package saxal.me.saxapokedex.ui.pokedex
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import saxal.me.saxapokedex.api.model.PokedexPokemon
 import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
 
-class PokedexListAdapter(private val data: List<String>) :
+class PokedexListAdapter(private var data: List<PokedexPokemon>) :
     RecyclerView.Adapter<PokedexListAdapter.ViewHolder>() {
-
-    companion object {
-        const val TAG = "POKEDEX_ADAPTER"
-    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,11 +22,15 @@ class PokedexListAdapter(private val data: List<String>) :
 
     override fun getItemCount(): Int = data.size
 
-
     inner class ViewHolder(private val binding: ListPokedexTileBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: String) {
-            binding.title = data
+        fun bind(data: PokedexPokemon) {
+            binding.title = data.name
         }
+    }
+
+    fun updateData(updated: List<PokedexPokemon>) {
+        data = updated
+        notifyDataSetChanged()
     }
 }

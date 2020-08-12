@@ -1,32 +1,11 @@
 package saxal.me.saxapokedex.ui.pokedex
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import saxal.me.saxapokedex.api.repository.PokedexRepository
 
 class PokedexViewModel : ViewModel() {
 
-    private val _data = MutableLiveData(
-        listOf(
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise",
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise",
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise",
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise"
-        )
-    )
+    val pokedexRepo = PokedexRepository()
 
-    val data: LiveData<List<String>>
-        get() = _data
+    val pokemon = pokedexRepo.getPokedexPokemon()
 }
