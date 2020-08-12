@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
@@ -16,6 +17,8 @@ class PokedexFragment : Fragment() {
     private lateinit var listAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
+    private val viewModel: PokedexViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,27 +26,8 @@ class PokedexFragment : Fragment() {
     ): View? {
         val binding = FragmentPokedexBinding.inflate(inflater)
 
-        val data = listOf(
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise",
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise",
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise",
-            "Charmander",
-            "Charmeleon",
-            "Charizard",
-            "Blastoise"
-        )
-
         viewManager = GridLayoutManager(activity, 2)
-        listAdapter = PokedexListAdapter(data)
+        listAdapter = PokedexListAdapter(viewModel.data.value!!)
 
         val itemDecoration =
             ItemOffsetDecoration(
