@@ -25,7 +25,8 @@ class PokedexListAdapter(private var data: List<PokedexPokemon>) :
     inner class ViewHolder(private val binding: ListPokedexTileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: PokedexPokemon) {
-            binding.title = data.name
+            binding.title = data.name.capitalize()
+            binding.imageUrl = data.url
         }
     }
 
