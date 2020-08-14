@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
+import saxal.me.saxapokedex.api.repository.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokedexBinding
 import saxal.me.saxapokedex.util.ItemOffsetDecoration
 
@@ -29,7 +30,7 @@ class PokedexFragment : Fragment() {
         val binding = FragmentPokedexBinding.inflate(inflater)
 
         viewManager = GridLayoutManager(activity, 2)
-        listAdapter = PokedexListAdapter(viewModel.pokemon.value ?: emptyList())
+        listAdapter = PokedexListAdapter(viewModel.pokemon.value?.data ?: listOf())
 
         val itemDecoration =
             ItemOffsetDecoration(
@@ -47,8 +48,16 @@ class PokedexFragment : Fragment() {
         }
 
         viewModel.pokemon.observe(viewLifecycleOwner, Observer {
+            Log.e("STATUS", it.loading)
             Log.i("POKEMONS!", it.toString())
-            listAdapter.updateData(it)
+
+            binding.loader.visibility =  when(it.loading) {
+                LoadingStatus.LOADING -> View.VISIBLE
+                LoadingStatus.FINISHED -> View.GONE
+                else -> View.GONE
+            }
+
+            listAdapter.updateData(it.data)
         })
 
         viewModel.pokemon

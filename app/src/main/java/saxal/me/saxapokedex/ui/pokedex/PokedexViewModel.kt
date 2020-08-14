@@ -8,5 +8,4 @@ class PokedexViewModel : ViewModel() {
     val pokedexRepo = PokedexRepository()
 
     val pokemon = pokedexRepo.allPokemon
-//    val pokemon = pokedexRepo.getPokedexPokemon()
 }

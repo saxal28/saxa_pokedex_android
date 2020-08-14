@@ -11,25 +11,38 @@ import saxal.me.saxapokedex.api.model.PokedexPokemonResults
 import saxal.me.saxapokedex.api.model.Pokemon
 import java.lang.Exception
 
+class LoadingStatus {
+    companion object {
+        const val NOT_STARTED = "not_started"
+        const val LOADING = "loading"
+        const val FINISHED = "finished"
+    }
+}
+
+data class PokeListResult<R>(
+    val loading: String = LoadingStatus.NOT_STARTED,
+    val data: List<R> = listOf()
+)
+
 class PokedexRepository {
 
-    private fun getIdFromUrl(url: String): String? {
-        val idRegex = Regex("/\\d+/")
-        val slashRegex = Regex("/")
-
-        return idRegex.find(url)?.value?.replace(slashRegex, "")
-    }
-
-    private fun getPokedexImage(url: String): String {
-        val id = getIdFromUrl(url)
-        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
-    }
+//    private fun getIdFromUrl(url: String): String? {
+//        val idRegex = Regex("/\\d+/")
+//        val slashRegex = Regex("/")
+//
+//        return idRegex.find(url)?.value?.replace(slashRegex, "")
+//    }
+//
+//    private fun getPokedexImage(url: String): String {
+//        val id = getIdFromUrl(url)
+//        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
+//    }
 
 
     // TODO: coroutine + live data
-    val allPokemon: LiveData<List<Pokemon>> = liveData {
+    val allPokemon: LiveData<PokeListResult<Pokemon>> = liveData {
 
-        emit(emptyList())
+        emit(PokeListResult(loading = LoadingStatus.LOADING))
 
         try {
             var list: List<Pokemon> = listOf()
@@ -40,7 +53,7 @@ class PokedexRepository {
                 list = list.plus(pokemonDetail)
             }
 
-            emit(list)
+            emit(PokeListResult(loading = LoadingStatus.FINISHED, data = list))
 
         } catch (exception: Exception) {
             Log.e("Exception", "$exception")
@@ -49,31 +62,31 @@ class PokedexRepository {
 
 
     // TODO: create cool wrapper
-    fun getPokedexPokemon(): LiveData<List<PokedexPokemon>> {
-        val data: MutableLiveData<List<PokedexPokemon>> = MutableLiveData(emptyList())
-
-        pokeService.listPokemon().enqueue(object : Callback<PokedexPokemonResults> {
-            override fun onResponse(
-                call: Call<PokedexPokemonResults>,
-                response: Response<PokedexPokemonResults>
-            ) {
-                val body = response.body()?.results ?: emptyList()
-
-                data.value = body.map {
-                    it.apply {
-                        this.url = getPokedexImage(this.url)
-
-                    }
-                }
-
-            }
-
-            override fun onFailure(call: Call<PokedexPokemonResults>, t: Throwable) {
-                Log.i("ERROR", t.localizedMessage ?: "error")
-            }
-
-        })
-
-        return data
-    }
+//    fun getPokedexPokemon(): LiveData<List<PokedexPokemon>> {
+//        val data: MutableLiveData<List<PokedexPokemon>> = MutableLiveData(emptyList())
+//
+//        pokeService.listPokemon().enqueue(object : Callback<PokedexPokemonResults> {
+//            override fun onResponse(
+//                call: Call<PokedexPokemonResults>,
+//                response: Response<PokedexPokemonResults>
+//            ) {
+//                val body = response.body()?.results ?: emptyList()
+//
+//                data.value = body.map {
+//                    it.apply {
+//                        this.url = getPokedexImage(this.url)
+//
+//                    }
+//                }
+//
+//            }
+//
+//            override fun onFailure(call: Call<PokedexPokemonResults>, t: Throwable) {
+//                Log.i("ERROR", t.localizedMessage ?: "error")
+//            }
+//
+//        })
+//
+//        return data
+//    }
 }
