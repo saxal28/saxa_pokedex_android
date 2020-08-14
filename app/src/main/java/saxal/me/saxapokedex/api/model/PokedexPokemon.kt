@@ -74,7 +74,7 @@ data class Sprites(
 data class Pokemon(
     val id: Int,
     val name: String,
-    val types: List<Types>,
+    val types: List<Types?>,
     val stats: List<Stats>,
     val sprites: Sprites
 )

@@ -2,44 +2,17 @@ package saxal.me.saxapokedex.api.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import retrofit2.*
-import saxal.me.saxapokedex.api.model.PokedexPokemon
+import saxal.me.saxapokedex.api.model.PokeListResult
 import saxal.me.saxapokedex.api.pokeService
-import saxal.me.saxapokedex.api.model.PokedexPokemonResults
 import saxal.me.saxapokedex.api.model.Pokemon
+import saxal.me.saxapokedex.constants.LoadingStatus
 import java.lang.Exception
-
-class LoadingStatus {
-    companion object {
-        const val NOT_STARTED = "not_started"
-        const val LOADING = "loading"
-        const val FINISHED = "finished"
-    }
-}
-
-data class PokeListResult<R>(
-    val loading: String = LoadingStatus.NOT_STARTED,
-    val data: List<R> = listOf()
-)
 
 class PokedexRepository {
 
-//    private fun getIdFromUrl(url: String): String? {
-//        val idRegex = Regex("/\\d+/")
-//        val slashRegex = Regex("/")
-//
-//        return idRegex.find(url)?.value?.replace(slashRegex, "")
-//    }
-//
-//    private fun getPokedexImage(url: String): String {
-//        val id = getIdFromUrl(url)
-//        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
-//    }
-
-
-    // TODO: coroutine + live data
+    // coroutine + live data
     val allPokemon: LiveData<PokeListResult<Pokemon>> = liveData {
 
         emit(PokeListResult(loading = LoadingStatus.LOADING))

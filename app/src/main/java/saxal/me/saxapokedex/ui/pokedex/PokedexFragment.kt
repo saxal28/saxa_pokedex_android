@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
-import saxal.me.saxapokedex.api.repository.LoadingStatus
+import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokedexBinding
 import saxal.me.saxapokedex.util.ItemOffsetDecoration
 
