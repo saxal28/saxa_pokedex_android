@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.api.model.PokedexPokemon
+import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
 
-class PokedexListAdapter(private var data: List<PokedexPokemon>) :
+class PokedexListAdapter(private var data: List<Pokemon>) :
     RecyclerView.Adapter<PokedexListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,13 +25,13 @@ class PokedexListAdapter(private var data: List<PokedexPokemon>) :
 
     inner class ViewHolder(private val binding: ListPokedexTileBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: PokedexPokemon) {
+        fun bind(data: Pokemon) {
             binding.title = data.name.capitalize()
-            binding.imageUrl = data.url
+            binding.imageUrl = data.sprites.other.official_artwork.front_default
         }
     }
 
-    fun updateData(updated: List<PokedexPokemon>) {
+    fun updateData(updated: List<Pokemon>) {
         data = updated
         notifyDataSetChanged()
     }

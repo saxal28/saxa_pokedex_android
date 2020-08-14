@@ -29,7 +29,7 @@ class PokedexFragment : Fragment() {
         val binding = FragmentPokedexBinding.inflate(inflater)
 
         viewManager = GridLayoutManager(activity, 2)
-        listAdapter = PokedexListAdapter(viewModel.pokemon.value!!)
+        listAdapter = PokedexListAdapter(viewModel.pokemon.value ?: emptyList())
 
         val itemDecoration =
             ItemOffsetDecoration(
@@ -46,11 +46,12 @@ class PokedexFragment : Fragment() {
             addItemDecoration(itemDecoration)
         }
 
-
         viewModel.pokemon.observe(viewLifecycleOwner, Observer {
             Log.i("POKEMONS!", it.toString())
             listAdapter.updateData(it)
         })
+
+        viewModel.pokemon
 
 
         return binding.root

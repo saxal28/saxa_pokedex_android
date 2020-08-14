@@ -3,12 +3,13 @@ package saxal.me.saxapokedex.api.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import retrofit2.Call
+import androidx.lifecycle.liveData
+import retrofit2.*
 import saxal.me.saxapokedex.api.model.PokedexPokemon
 import saxal.me.saxapokedex.api.pokeService
-import retrofit2.Callback
-import retrofit2.Response
 import saxal.me.saxapokedex.api.model.PokedexPokemonResults
+import saxal.me.saxapokedex.api.model.Pokemon
+import java.lang.Exception
 
 class PokedexRepository {
 
@@ -23,6 +24,29 @@ class PokedexRepository {
         val id = getIdFromUrl(url)
         return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
     }
+
+
+    // TODO: coroutine + live data
+    val allPokemon: LiveData<List<Pokemon>> = liveData {
+
+        emit(emptyList())
+
+        try {
+            var list: List<Pokemon> = listOf()
+            val pokemon = pokeService.listPokemon().await()
+
+            pokemon.results.map { pokedexPokemon ->
+                val pokemonDetail = pokeService.getPokemonInfo(pokedexPokemon.name).await()
+                list = list.plus(pokemonDetail)
+            }
+
+            emit(list)
+
+        } catch (exception: Exception) {
+            Log.e("Exception", "$exception")
+        }
+    }
+
 
     // TODO: create cool wrapper
     fun getPokedexPokemon(): LiveData<List<PokedexPokemon>> {
