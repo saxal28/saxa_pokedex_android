@@ -35,7 +35,7 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
             binding.imageUrl = data.sprites.other.official_artwork.front_default
             binding.type1 = primaryType.capitalize()
 
-            if(data.types.size > 1) {
+            if (data.types.size > 1) {
                 binding.type2 = data.types[1]!!.type.name.capitalize()
             }
 
@@ -48,38 +48,56 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
         notifyDataSetChanged()
     }
 
+    private fun setupUI(
+        binding: ListPokedexTileBinding,
+        backgroundResourceId: Int,
+        pokeballResourceId: Int,
+        tagResourceId: Int
+    ) {
+        binding.card.setBackgroundResource(backgroundResourceId)
+        binding.pokeball.setImageResource(pokeballResourceId)
+        binding.pokedexTag.setBackgroundResource(tagResourceId)
+        binding.pokedexTag2.setBackgroundResource(tagResourceId)
+    }
+
     fun setupCellForType(binding: ListPokedexTileBinding, type: String) {
         when (type) {
-            TypesId.FIRE -> {
-                binding.card.setBackgroundResource(R.drawable.card_bg_fire)
-                binding.pokeball.setImageResource(R.drawable.card_pokeball_fire)
-                binding.pokedexTag.setBackgroundResource(R.drawable.card_tag_fire)
-                binding.pokedexTag2.setBackgroundResource(R.drawable.card_tag_fire)
-            }
-            TypesId.WATER -> {
-                binding.card.setBackgroundResource(R.drawable.card_bg_water)
-                binding.pokeball.setImageResource(R.drawable.card_pokeball_water)
-                binding.pokedexTag.setBackgroundResource(R.drawable.card_tag_water)
-                binding.pokedexTag2.setBackgroundResource(R.drawable.card_tag_water)
-            }
-            TypesId.GRASS -> {
-                binding.card.setBackgroundResource(R.drawable.card_bg_grass)
-                binding.pokeball.setImageResource(R.drawable.card_pokeball_grass)
-                binding.pokedexTag.setBackgroundResource(R.drawable.card_tag_grass)
-                binding.pokedexTag2.setBackgroundResource(R.drawable.card_tag_grass)
-            }
-            TypesId.ELECTRIC -> {
-                binding.card.setBackgroundResource(R.drawable.card_bg_electric)
-                binding.pokeball.setImageResource(R.drawable.card_pokeball_electric)
-                binding.pokedexTag.setBackgroundResource(R.drawable.card_tag_electric)
-                binding.pokedexTag2.setBackgroundResource(R.drawable.card_tag_electric)
-            }
-            else -> {
-                binding.card.setBackgroundResource(R.drawable.card_bg_unknown)
-                binding.pokeball.setImageResource(R.drawable.card_pokeball_unknown)
-                binding.pokedexTag.setBackgroundResource(R.drawable.card_tag_unknown)
-                binding.pokedexTag2.setBackgroundResource(R.drawable.card_tag_unknown)
-            }
+            TypesId.FIRE ->
+                setupUI(
+                    binding,
+                    backgroundResourceId = R.drawable.card_bg_fire,
+                    pokeballResourceId = R.drawable.card_pokeball_fire,
+                    tagResourceId = R.drawable.card_tag_fire
+                )
+
+            TypesId.WATER ->
+                setupUI(
+                    binding,
+                    backgroundResourceId = R.drawable.card_bg_water,
+                    pokeballResourceId = R.drawable.card_pokeball_water,
+                    tagResourceId = R.drawable.card_tag_water
+                )
+            TypesId.GRASS ->
+                setupUI(
+                    binding,
+                    backgroundResourceId = R.drawable.card_bg_grass,
+                    pokeballResourceId = R.drawable.card_pokeball_grass,
+                    tagResourceId = R.drawable.card_tag_grass
+                )
+            TypesId.ELECTRIC ->
+                setupUI(
+                    binding,
+                    backgroundResourceId = R.drawable.card_bg_electric,
+                    pokeballResourceId = R.drawable.card_pokeball_electric,
+                    tagResourceId = R.drawable.card_tag_electric
+                )
+            else ->
+                setupUI(
+                    binding,
+                    backgroundResourceId = R.drawable.card_bg_unknown,
+                    pokeballResourceId = R.drawable.card_pokeball_unknown,
+                    tagResourceId = R.drawable.card_tag_unknown
+                )
         }
     }
 }

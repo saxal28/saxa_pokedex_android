@@ -16,7 +16,11 @@ import java.util.concurrent.ConcurrentLinkedQueue
 class Timestamp {
     companion object {
         fun time() = Date().time
-        fun getTimestampDifference(startTime: Long, endTime: Long, tag: String? = "DURATION"): String {
+        fun getTimestampDifference(
+            startTime: Long,
+            endTime: Long,
+            tag: String? = "DURATION"
+        ): String {
             val diff: Long = endTime - startTime
             val seconds = diff / 1000.0000
 
@@ -42,7 +46,7 @@ class PokedexRepository {
             val pokemon = pokeService.listPokemon().await()
             val lstOfReturnData = ConcurrentLinkedQueue<Response<Pokemon>>()
 
-            runBlocking {
+            coroutineScope {
                 pokemon.results.map { it.name }.forEach { name ->
                     launch(Dispatchers.IO) {
                         lstOfReturnData.add(pokeService.getPokemonInfo(name).execute())
@@ -50,7 +54,7 @@ class PokedexRepository {
                 }
             }
 
-            list = lstOfReturnData.map { it.body()!! }
+            list = lstOfReturnData.map { it.body()!! }.sortedBy { it.id }
 
             val endTime = Timestamp.time()
             Timestamp.getTimestampDifference(startTime, endTime)
@@ -59,7 +63,12 @@ class PokedexRepository {
 
         } catch (exception: Exception) {
             Log.e("Exception", "$exception")
-            emit(PokeListResult(loading = LoadingStatus.FINISHED, errorMessage = exception.message ?: "Error!"))
+            emit(
+                PokeListResult(
+                    loading = LoadingStatus.FINISHED,
+                    errorMessage = exception.message ?: "Error!"
+                )
+            )
         }
     }
 
