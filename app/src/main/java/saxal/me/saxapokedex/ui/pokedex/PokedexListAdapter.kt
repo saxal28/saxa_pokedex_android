@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
-import saxal.me.saxapokedex.api.model.PokedexPokemon
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.constants.TypesId
 import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
+
 
 class PokedexListAdapter(private var data: List<Pokemon>) :
     RecyclerView.Adapter<PokedexListAdapter.ViewHolder>() {
@@ -52,7 +52,7 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
         when (type) {
             TypesId.FIRE -> {
                 binding.card.setBackgroundResource(R.drawable.card_bg_fire)
-                binding.pokeball.setBackgroundResource(R.drawable.card_pokeball_fire)
+                binding.pokeball.setImageResource(R.drawable.card_pokeball_fire)
                 binding.pokedexTag.setBackgroundResource(R.drawable.card_tag_fire)
                 binding.pokedexTag2.setBackgroundResource(R.drawable.card_tag_fire)
             }

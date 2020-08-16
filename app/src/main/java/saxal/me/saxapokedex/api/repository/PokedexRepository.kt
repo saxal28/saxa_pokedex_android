@@ -3,12 +3,30 @@ package saxal.me.saxapokedex.api.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import kotlinx.coroutines.*
 import retrofit2.*
 import saxal.me.saxapokedex.api.model.PokeListResult
 import saxal.me.saxapokedex.api.pokeService
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.constants.LoadingStatus
 import java.lang.Exception
+import java.util.*
+import java.util.concurrent.ConcurrentLinkedQueue
+
+class Timestamp {
+    companion object {
+        fun time() = Date().time
+        fun getTimestampDifference(startTime: Long, endTime: Long, tag: String? = "DURATION"): String {
+            val diff: Long = endTime - startTime
+            val seconds = diff / 1000.0000
+
+            Log.i("$tag", "seconds: $seconds")
+            Log.i("$tag", "milliseconds: $diff")
+
+            return "Duration: "
+        }
+    }
+}
 
 class PokedexRepository {
 
@@ -16,20 +34,32 @@ class PokedexRepository {
     val allPokemon: LiveData<PokeListResult<Pokemon>> = liveData {
 
         emit(PokeListResult(loading = LoadingStatus.LOADING))
+        val startTime = Timestamp.time()
 
         try {
-            var list: List<Pokemon> = listOf()
-            val pokemon = pokeService.listPokemon().await()
+            var list: List<Pokemon> = mutableListOf()
 
-            pokemon.results.map { pokedexPokemon ->
-                val pokemonDetail = pokeService.getPokemonInfo(pokedexPokemon.name).await()
-                list = list.plus(pokemonDetail)
+            val pokemon = pokeService.listPokemon().await()
+            val lstOfReturnData = ConcurrentLinkedQueue<Response<Pokemon>>()
+
+            runBlocking {
+                pokemon.results.map { it.name }.forEach { name ->
+                    launch(Dispatchers.IO) {
+                        lstOfReturnData.add(pokeService.getPokemonInfo(name).execute())
+                    }
+                }
             }
+
+            list = lstOfReturnData.map { it.body()!! }
+
+            val endTime = Timestamp.time()
+            Timestamp.getTimestampDifference(startTime, endTime)
 
             emit(PokeListResult(loading = LoadingStatus.FINISHED, data = list))
 
         } catch (exception: Exception) {
             Log.e("Exception", "$exception")
+            emit(PokeListResult(loading = LoadingStatus.FINISHED, errorMessage = exception.message ?: "Error!"))
         }
     }
 
