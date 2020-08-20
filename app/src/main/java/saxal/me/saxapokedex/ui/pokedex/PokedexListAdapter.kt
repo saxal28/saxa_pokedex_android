@@ -2,6 +2,7 @@ package saxal.me.saxapokedex.ui.pokedex
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
 import saxal.me.saxapokedex.api.model.Pokemon
@@ -37,6 +38,12 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
 
             if (data.types.size > 1) {
                 binding.type2 = data.types[1].type.name.capitalize()
+            }
+
+            binding.card.setOnClickListener {
+                val navController = Navigation.findNavController(itemView)
+                navController.navigate(R.id.action_pokedexFragment2_to_pokemonDetailFragment)
+                PokedexFragmentDirections.actionPokedexFragment2ToPokemonDetailFragment(pokemonId = data.id)
             }
 
             setupCellForType(binding, primaryType)

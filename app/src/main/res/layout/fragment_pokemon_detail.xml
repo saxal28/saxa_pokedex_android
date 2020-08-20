@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="pokemonName"
+            type="String" />
+
+        <variable
+            name="pokemonId"
+            type="String" />
+
+        <variable
+            name="pokemonType"
+            type="String" />
+
+        <variable
+            name="pokemonType2"
+            type="String" />
+
+        <variable
+            name="pokemonImageUrl"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pokemonProfileView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/fire"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/pokemonNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            tools:text="Charmander"
+            android:text="@{pokemonName}"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_marginEnd="20dp"
+            android:id="@+id/pokemonIdView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="#001"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:text="@{pokemonId}"
+            app:layout_constraintBottom_toBottomOf="@id/pokemonNameView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/pokemonNameView" />
+
+        <TextView
+            android:id="@+id/pokemonTypeView"
+            style="@style/pokedex_tag"
+            android:text="@{pokemonType}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            tools:text="Fire"
+
+            app:layout_constraintStart_toStartOf="@id/pokemonNameView"
+            app:layout_constraintTop_toTopOf="@id/pokemonNameView" />
+
+        <TextView
+            android:id="@+id/pokemonType2View"
+            style="@style/pokedex_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="10dp"
+            tools:text="Flying"
+            android:text="@{pokemonType2}"
+            app:layout_constraintStart_toEndOf="@+id/pokemonTypeView"
+            app:layout_constraintTop_toTopOf="@id/pokemonTypeView" />
+
+        <ImageView
+            android:id="@+id/pokeballView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/card_pokeball_fire"
+            app:layout_constraintTop_toBottomOf="@id/pokemonTypeView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <View
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/header_rounded"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@id/pokemonTypeView"
+                app:profileImage="@{pokemonImageUrl}"
+                tools:layout_editor_absoluteX="0dp"
+                tools:src="@drawable/charmander" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+</layout>

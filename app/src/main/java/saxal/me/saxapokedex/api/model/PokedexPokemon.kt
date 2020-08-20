@@ -1,7 +1,9 @@
 package saxal.me.saxapokedex.api.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 import saxal.me.saxapokedex.api.database.entity.PokemonEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonSpritesEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonStatsEntity
