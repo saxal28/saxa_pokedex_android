@@ -11,7 +11,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
 import saxal.me.saxapokedex.R
 import saxal.me.saxapokedex.api.model.Pokemon
-import saxal.me.saxapokedex.constants.TypesId
+import saxal.me.saxapokedex.data.PokemonTypeResource
+import saxal.me.saxapokedex.data.PokemonTypeResources
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailBinding
 
 class PokemonDetailFragment : DialogFragment() {
@@ -83,17 +84,15 @@ class PokemonDetailFragment : DialogFragment() {
 
     private fun setupUIForType(
         binding: FragmentPokemonDetailBinding,
-        backgroundColorId: Int,
-        pokeballResourceId: Int,
-        tagResourceId: Int
+        resource: PokemonTypeResource
     ) {
-        val color = resources.getColor(backgroundColorId)
+        val color = resources.getColor(resource.backgroundColorResourceId)
 
         binding.pokemonProfileView.setBackgroundColor(color)
         binding.pokemonNavbar.setBackgroundColor(color)
-        binding.pokeballView.setImageResource(pokeballResourceId)
-        binding.pokemonTypeView.setBackgroundResource(tagResourceId)
-        binding.pokemonType2View.setBackgroundResource(tagResourceId)
+        binding.pokeballView.setImageResource(resource.pokeballResourceId)
+        binding.pokemonTypeView.setBackgroundResource(resource.tagResourceId)
+        binding.pokemonType2View.setBackgroundResource(resource.tagResourceId)
     }
 
     private fun setupText(binding: FragmentPokemonDetailBinding, pokemon: Pokemon) {
@@ -104,152 +103,10 @@ class PokemonDetailFragment : DialogFragment() {
         binding.pokemonId = pokemon.displayId
     }
 
-
     // TODO: refactor into shared PokemonTypeResources data class
     private fun setupPokemonDetailsUI(binding: FragmentPokemonDetailBinding, type: String) {
-        when (type) {
-            TypesId.FIRE ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.fire,
-                    pokeballResourceId = R.drawable.card_pokeball_fire,
-                    tagResourceId = R.drawable.card_tag_fire
-                )
-
-            TypesId.WATER ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.water,
-                    pokeballResourceId = R.drawable.card_pokeball_water,
-                    tagResourceId = R.drawable.card_tag_water
-                )
-            TypesId.GRASS ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.grass,
-                    pokeballResourceId = R.drawable.card_pokeball_grass,
-                    tagResourceId = R.drawable.card_tag_grass
-                )
-            TypesId.ELECTRIC ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.electric,
-                    pokeballResourceId = R.drawable.card_pokeball_electric,
-                    tagResourceId = R.drawable.card_tag_electric
-                )
-
-
-            TypesId.ROCK ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.rock,
-                    pokeballResourceId = R.drawable.card_pokeball_rock,
-                    tagResourceId = R.drawable.card_tag_rock
-                )
-
-            TypesId.GROUND ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.ground,
-                    pokeballResourceId = R.drawable.card_pokeball_ground,
-                    tagResourceId = R.drawable.card_tag_ground
-                )
-
-            TypesId.POISON ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.poison,
-                    pokeballResourceId = R.drawable.card_pokeball_poison,
-                    tagResourceId = R.drawable.card_tag_poison
-                )
-
-            TypesId.GHOST ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.ghost,
-                    pokeballResourceId = R.drawable.card_pokeball_ghost,
-                    tagResourceId = R.drawable.card_tag_ghost
-                )
-
-            TypesId.PSYCHIC ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.psychic,
-                    pokeballResourceId = R.drawable.card_pokeball_psychic,
-                    tagResourceId = R.drawable.card_tag_psychic
-                )
-
-            TypesId.ICE ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.ice,
-                    pokeballResourceId = R.drawable.card_pokeball_ice,
-                    tagResourceId = R.drawable.card_tag_ice
-                )
-
-            TypesId.STEEL ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.steel,
-                    pokeballResourceId = R.drawable.card_pokeball_steel,
-                    tagResourceId = R.drawable.card_tag_steel
-                )
-
-            TypesId.FIGHTING ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.fighting,
-                    pokeballResourceId = R.drawable.card_pokeball_fighting,
-                    tagResourceId = R.drawable.card_tag_fighting
-                )
-
-            TypesId.FLYING ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.flying,
-                    pokeballResourceId = R.drawable.card_pokeball_flying,
-                    tagResourceId = R.drawable.card_tag_flying
-                )
-
-            TypesId.DRAGON ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.dragon,
-                    pokeballResourceId = R.drawable.card_pokeball_dragon,
-                    tagResourceId = R.drawable.card_tag_dragon
-                )
-
-            TypesId.FAIRY ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.fairy,
-                    pokeballResourceId = R.drawable.card_pokeball_fairy,
-                    tagResourceId = R.drawable.card_tag_fairy
-                )
-
-            TypesId.NORMAL ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.normal,
-                    pokeballResourceId = R.drawable.card_pokeball_normal,
-                    tagResourceId = R.drawable.card_tag_normal
-                )
-            TypesId.BUG ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.bug,
-                    pokeballResourceId = R.drawable.card_pokeball_bug,
-                    tagResourceId = R.drawable.card_tag_bug
-                )
-
-            else ->
-                setupUIForType(
-                    binding,
-                    backgroundColorId = R.color.unknown,
-                    pokeballResourceId = R.drawable.card_pokeball_unknown,
-                    tagResourceId = R.drawable.card_tag_unknown
-                )
-        }
+        val resource = PokemonTypeResources.forType(type)
+        setupUIForType(binding, resource)
     }
 
 }
