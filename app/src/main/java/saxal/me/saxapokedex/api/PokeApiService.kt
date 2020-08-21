@@ -6,7 +6,7 @@ import saxal.me.saxapokedex.api.model.PokedexPokemonResults
 import saxal.me.saxapokedex.api.model.Pokemon
 
 interface PokeApiService {
-    @GET("pokemon?limit=4")
+    @GET("pokemon?limit=151")
     fun listPokemon(): Call<PokedexPokemonResults>
 
     @GET("pokemon/{name}")
