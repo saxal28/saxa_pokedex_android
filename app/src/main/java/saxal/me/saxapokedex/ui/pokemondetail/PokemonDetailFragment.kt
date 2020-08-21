@@ -1,12 +1,17 @@
 package saxal.me.saxapokedex.ui.pokemondetail
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
 import saxal.me.saxapokedex.R
@@ -35,6 +40,7 @@ class PokemonDetailFragment : DialogFragment() {
     private val viewModel: PokemonDetailViewModel by viewModels()
 
     lateinit var binding: FragmentPokemonDetailBinding
+    lateinit var adapter: DemoCollectionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,7 +66,8 @@ class PokemonDetailFragment : DialogFragment() {
         }
 
         // set up pager
-        binding.pokemonDetailPager.adapter = DemoCollectionAdapter(this)
+        adapter = DemoCollectionAdapter(this)
+        binding.pokemonDetailPager.adapter = adapter
 
         return binding.root
     }
@@ -68,12 +75,12 @@ class PokemonDetailFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         TabLayoutMediator(binding.tabLayout, binding.pokemonDetailPager) { tab, position ->
-            tab.text = when((position + 1).toString()) {
+            tab.text = when ((position + 1).toString()) {
                 "1" -> "About"
                 "2" -> "Stats"
                 "3" -> "Form"
                 "4" -> "Moves"
-                else -> "Tab ${position+1}"
+                else -> "Tab ${position + 1}"
             }
         }.attach()
     }
@@ -103,7 +110,6 @@ class PokemonDetailFragment : DialogFragment() {
         binding.pokemonId = pokemon.displayId
     }
 
-    // TODO: refactor into shared PokemonTypeResources data class
     private fun setupPokemonDetailsUI(binding: FragmentPokemonDetailBinding, type: String) {
         val resource = PokemonTypeResources.forType(type)
         setupUIForType(binding, resource)
