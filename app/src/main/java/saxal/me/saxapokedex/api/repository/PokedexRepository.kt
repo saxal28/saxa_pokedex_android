@@ -67,4 +67,19 @@ class PokedexRepository {
             }
         }
     }
+
+    // GET / Pokemon by Id
+    fun getPokemonById(pokemonId: Int): LiveData<PokeResult<Pokemon>> = liveData {
+        emit(PokeResult(loading = LoadingStatus.LOADING))
+
+        try {
+            val pokemon = CacheService.getPokemonById(pokemonId)
+            emit(PokeResult(loading = LoadingStatus.FINISHED, data = pokemon))
+
+        } catch (e: Exception) {
+            Log.e("GET", "e: $e")
+            emit(PokeResult(errorMessage = e.message ?: "Error!"))
+        }
+    }
+
 }

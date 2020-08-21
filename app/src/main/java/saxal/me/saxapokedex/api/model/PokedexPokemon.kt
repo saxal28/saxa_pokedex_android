@@ -118,4 +118,26 @@ data class Pokemon(
         pokemonId = this.id.toLong(),
         name = this.name
     )
+
+    val primaryType = types[0].type.name
+    val secondaryType = types.getOrNull(1)?.type?.name
+
+    // ui
+
+    val displayPrimaryType
+        get() = primaryType.capitalize()
+
+    val displaySecondaryType
+        get() = secondaryType?.capitalize()
+
+    val displayId: String
+        get() = when (id.toString().length) {
+            1 -> "#00${id}"
+            2 -> "#0${id}"
+            else -> "#${id}"
+        }
+
+    val displayName: String
+        get() = name.capitalize()
+
 }

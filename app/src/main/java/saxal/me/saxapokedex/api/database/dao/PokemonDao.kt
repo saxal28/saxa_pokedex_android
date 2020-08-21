@@ -9,6 +9,10 @@ interface PokemonDao {
     @Query("SELECT * FROM PokemonEntity")
     fun getAll(): List<PokemonWithTypesEntity>
 
+    @Transaction
+    @Query("SELECT * FROM PokemonEntity where pokemonId == :id")
+    fun getPokemon(id: Int): PokemonWithTypesEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPokemon(pokemon: List<PokemonEntity>)
 

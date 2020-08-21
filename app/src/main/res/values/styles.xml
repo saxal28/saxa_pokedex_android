@@ -23,6 +23,13 @@
         <item name="android:background">@drawable/card_tag_fire</item>
     </style>
 
+    <!-- Set parent theme as app theme. -->
+    <style name="DialogTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
     <style name="Widget.ActionBar" parent="@style/Widget.AppCompat.ActionBar">
         <item name="titleTextStyle">@style/TextAppearance.Widget.ActionBar.Title</item>
         <item name="subtitleTextStyle">@style/TextAppearance.Widget.ActionBar.Subtitle</item>

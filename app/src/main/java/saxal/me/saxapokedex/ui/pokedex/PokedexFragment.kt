@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
 import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokedexBinding
+import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailFragment
 import saxal.me.saxapokedex.util.ItemOffsetDecoration
 
 class PokedexFragment : Fragment() {
@@ -50,7 +51,6 @@ class PokedexFragment : Fragment() {
 
         viewModel.pokemon.observe(viewLifecycleOwner, Observer {
             Log.e("STATUS", it.loading)
-            Log.i("POKEMONS!", it.toString())
 
             binding.loader.visibility =  when(it.loading) {
                 LoadingStatus.LOADING -> View.VISIBLE
@@ -59,6 +59,16 @@ class PokedexFragment : Fragment() {
             }
 
             listAdapter.updateData(it.data)
+        })
+
+        listAdapter.pokemonToNavigateTo.observe(viewLifecycleOwner, Observer { pokemon ->
+            if(pokemon != null) {
+                PokemonDetailFragment
+                    .newInstance(pokemon)
+                    .show(childFragmentManager, PokemonDetailFragment.TAG)
+
+                listAdapter.clearActivePokemonId()
+            }
         })
 
 

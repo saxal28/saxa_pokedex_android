@@ -2,7 +2,8 @@ package saxal.me.saxapokedex.ui.pokedex
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
 import saxal.me.saxapokedex.api.model.Pokemon
@@ -12,6 +13,14 @@ import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
 
 class PokedexListAdapter(private var data: List<Pokemon>) :
     RecyclerView.Adapter<PokedexListAdapter.ViewHolder>() {
+
+    private val _pokemonToNavigateTo: MutableLiveData<Pokemon?> = MutableLiveData(null)
+    val pokemonToNavigateTo: LiveData<Pokemon?>
+        get() = _pokemonToNavigateTo
+
+    fun clearActivePokemonId() {
+        _pokemonToNavigateTo.value = null
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,25 +37,20 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
 
     inner class ViewHolder(private val binding: ListPokedexTileBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Pokemon) {
-            val primaryType = data.types[0].type.name
+        fun bind(pokemon: Pokemon) {
 
-            binding.title = data.name.capitalize()
-            binding.id = "#${data.id}"
-            binding.imageUrl = data.sprites.other.official_artwork.front_default
-            binding.type1 = primaryType.capitalize()
+            binding.title = pokemon.displayName
+            binding.id = pokemon.displayId
+            binding.imageUrl = pokemon.sprites.other.official_artwork.front_default
+            binding.type1 = pokemon.displayPrimaryType
 
-            if (data.types.size > 1) {
-                binding.type2 = data.types[1].type.name.capitalize()
-            }
+            binding.type2 = pokemon.displaySecondaryType
 
             binding.card.setOnClickListener {
-                val navController = Navigation.findNavController(itemView)
-                navController.navigate(R.id.action_pokedexFragment2_to_pokemonDetailFragment)
-                PokedexFragmentDirections.actionPokedexFragment2ToPokemonDetailFragment(pokemonId = data.id)
+                _pokemonToNavigateTo.value = pokemon
             }
 
-            setupCellForType(binding, primaryType)
+            setupCellForType(binding, pokemon.primaryType)
         }
     }
 
@@ -67,6 +71,7 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
         binding.pokedexTag2.setBackgroundResource(tagResourceId)
     }
 
+    // TODO: refactor this
     fun setupCellForType(binding: ListPokedexTileBinding, type: String) {
         when (type) {
             TypesId.FIRE ->
@@ -202,8 +207,6 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
                     pokeballResourceId = R.drawable.card_pokeball_bug,
                     tagResourceId = R.drawable.card_tag_bug
                 )
-
-
 
             else ->
                 setupUI(

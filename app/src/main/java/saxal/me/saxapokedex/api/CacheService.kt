@@ -26,6 +26,22 @@ class CacheService {
             return pokemon
         }
 
+        suspend fun getPokemonById(pokemonId: Int): Pokemon? {
+            var pokemon: Pokemon? = null
+
+            withContext(Dispatchers.IO) {
+                try {
+                    val dao = Database.instance?.pokemonDao()
+                    val loadedPokemon = dao?.getPokemon(pokemonId)
+                    pokemon = loadedPokemon?.mapToUIModel()
+                } catch (e: Exception) {
+                    Log.i("EX", e.message ?: "db error")
+                }
+            }
+
+            return pokemon
+        }
+
         // save pokemon
         suspend fun savePokemon(pokemon: List<Pokemon>) {
             withContext(Dispatchers.IO) {
