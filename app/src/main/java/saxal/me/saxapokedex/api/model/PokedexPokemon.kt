@@ -1,9 +1,7 @@
 package saxal.me.saxapokedex.api.model
 
-import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import kotlinx.android.parcel.Parcelize
 import saxal.me.saxapokedex.api.database.entity.PokemonEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonSpritesEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonStatsEntity
@@ -60,6 +58,11 @@ data class Stats(
         name = this.stat.name,
         url = this.stat.url
     )
+
+    private val maxStat = 180.00
+
+    val statPercentage: Double
+        get() =  base_stat.toDouble() / maxStat
 }
 
 // Sprites
@@ -121,6 +124,13 @@ data class Pokemon(
 
     val primaryType = types[0].type.name
     val secondaryType = types.getOrNull(1)?.type?.name
+
+    val hpStat = stats.find { it.stat.name == "hp" }
+    val attackStat = stats.find { it.stat.name == "attack" }
+    val defenseStat = stats.find { it.stat.name == "defense" }
+    val specialAttackStat = stats.find { it.stat.name == "special-attack" }
+    val specialDefenseStat = stats.find { it.stat.name == "special-defense" }
+    val speedStat = stats.find { it.stat.name == "speed" }
 
     // ui
 

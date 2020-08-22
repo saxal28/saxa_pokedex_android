@@ -1,16 +1,17 @@
-package saxal.me.saxapokedex.ui.pokemondetail
+package saxal.me.saxapokedex.ui.pokemondetail.pokemonstats
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.switchMap
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.api.repository.PokeResult
 import saxal.me.saxapokedex.api.repository.PokedexRepository
 
-class PokemonDetailViewModel: ViewModel() {
-
+class PokemonDetailStatsViewModel: ViewModel() {
     private val pokemonRepository = PokedexRepository()
 
-    val pokemonId: MutableLiveData<Int?> = MutableLiveData()
     val pokemon: MutableLiveData<Pokemon?> = MutableLiveData()
+    val pokemonId: MutableLiveData<Int?> = MutableLiveData()
 
     val loadPokemonById = pokemonId.switchMap { pokemonId ->
         if(pokemonId != null) {
@@ -21,7 +22,7 @@ class PokemonDetailViewModel: ViewModel() {
                 MutableLiveData(PokeResult(data = pokemon.value!!))
             }
         } else {
-           MutableLiveData(PokeResult())
+            MutableLiveData(PokeResult())
         }
     }
 }

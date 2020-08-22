@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="androidx.lifecycle.MutableLiveData"/>
+        <variable
+            name="progress"
+            type="MutableLiveData&lt;Double>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/statValueTrack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:background="@drawable/progress_bar_track" />
+
+        <View
+            android:id="@+id/statValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="@drawable/progress_bar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

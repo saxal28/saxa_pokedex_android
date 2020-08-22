@@ -1,17 +1,12 @@
 package saxal.me.saxapokedex.ui.pokemondetail
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
 import saxal.me.saxapokedex.R
@@ -56,6 +51,7 @@ class PokemonDetailFragment : DialogFragment() {
 
         viewModel.loadPokemonById.observe(viewLifecycleOwner, Observer { pokeResult ->
             if (pokeResult.data != null) {
+                viewModel.pokemon.value = pokeResult.data
                 setupText(binding, pokeResult.data)
             }
         })
@@ -66,8 +62,10 @@ class PokemonDetailFragment : DialogFragment() {
         }
 
         // set up pager
-        adapter = DemoCollectionAdapter(this)
+        adapter = DemoCollectionAdapter(this, viewModel.pokemonId.value!!)
         binding.pokemonDetailPager.adapter = adapter
+
+        binding.pokemonDetailPager.setCurrentItem(1, false)
 
         return binding.root
     }

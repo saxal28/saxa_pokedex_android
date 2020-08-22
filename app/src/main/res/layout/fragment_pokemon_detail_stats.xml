@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
 
     <data>
+        <variable
+            name="hpProgress"
+            type="Double" />
 
+        <variable
+            name="attackProgress"
+            type="Double" />
+
+        <variable
+            name="defenseProgress"
+            type="Double" />
+
+        <variable
+            name="specialAttackProgress"
+            type="Double" />
+
+        <variable
+            name="specialDefenseProgress"
+            type="Double" />
+
+        <variable
+            name="speedProgress"
+            type="Double" />
     </data>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
-        >
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/stat_hp"
+            bind:name="@{@string/stat_hp}"
+            bind:progress="@{hpProgress}"
+            layout="@layout/stat"/>
+
+        <include
+            android:id="@+id/stat_attack"
+            bind:name="@{@string/stat_attack}"
+            bind:progress="@{attackProgress}"
+            layout="@layout/stat"/>
+
+        <include
+            android:id="@+id/stat_defense"
+            bind:name="@{@string/stat_defense}"
+            bind:progress="@{defenseProgress}"
+            layout="@layout/stat"/>
+
+        <include
+            android:id="@+id/stat_special_attack"
+            bind:name="@{@string/stat_special_attack}"
+            bind:progress="@{specialAttackProgress}"
+            layout="@layout/stat"/>
+
+        <include
+            android:id="@+id/stat_special_defense"
+            bind:name="@{@string/stat_special_defense}"
+            bind:progress="@{specialDefenseProgress}"
+            layout="@layout/stat"/>
+
+        <include
+            android:id="@+id/stat_speed"
+            bind:name="@{@string/stat_speed}"
+            bind:progress="@{speedProgress}"
+            layout="@layout/stat"/>
 
     </LinearLayout>
 </layout>
