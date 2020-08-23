@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import saxal.me.saxapokedex.api.model.Pokemon
@@ -13,11 +14,7 @@ import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel
 
 class PokemonDetailStatsFragment: Fragment() {
 
-    companion object {
-        const val POKEMON_ID = "pokemon_id"
-    }
-
-    private val viewModel: PokemonDetailViewModel by viewModels()
+    private val sharedViewModel: PokemonDetailViewModel by activityViewModels()
     lateinit var binding: FragmentPokemonDetailStatsBinding
 
     override fun onCreateView(
@@ -32,15 +29,8 @@ class PokemonDetailStatsFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments.takeIf { it!!.containsKey(POKEMON_ID) }?.apply {
-            viewModel.pokemonId.value = getInt(POKEMON_ID)
-        }
-
-        viewModel.loadPokemonById.observe(viewLifecycleOwner, Observer { pokeResult ->
-            if (pokeResult.data != null) {
-                viewModel.pokemon.value = pokeResult.data
-                setupStats(pokeResult.data)
-            }
+        sharedViewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
+            setupStats(pokemon!!)
         })
     }
 

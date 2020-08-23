@@ -14,12 +14,7 @@ class PokemonDetailViewModel: ViewModel() {
 
     val loadPokemonById = pokemonId.switchMap { pokemonId ->
         if(pokemonId != null) {
-            if(pokemon.value == null){
-                // if no pokemon in view-model, fetch
-                pokemonRepository.getPokemonById(pokemonId)
-            } else {
-                MutableLiveData(PokeResult(data = pokemon.value!!))
-            }
+            pokemonRepository.getPokemonById(pokemonId)
         } else {
            MutableLiveData(PokeResult())
         }

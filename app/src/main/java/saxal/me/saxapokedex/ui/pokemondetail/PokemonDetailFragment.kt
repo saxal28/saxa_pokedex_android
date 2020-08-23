@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
@@ -32,10 +32,11 @@ class PokemonDetailFragment : DialogFragment() {
         }
     }
 
-    private val viewModel: PokemonDetailViewModel by viewModels()
+    // shared viewmodel
+    private val sharedViewModel: PokemonDetailViewModel by activityViewModels()
 
     lateinit var binding: FragmentPokemonDetailBinding
-    lateinit var adapter: DemoCollectionAdapter
+    private lateinit var adapter: DemoCollectionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,13 +46,13 @@ class PokemonDetailFragment : DialogFragment() {
         binding = FragmentPokemonDetailBinding.inflate(LayoutInflater.from(context))
 
         arguments?.let { args ->
-            viewModel.pokemonId.value = args.getInt(POKEMON_ID)
+            sharedViewModel.pokemonId.value = args.getInt(POKEMON_ID)
             setupPokemonDetailsUI(binding, args.getString(POKEMON_TYPE)!!)
         }
 
-        viewModel.loadPokemonById.observe(viewLifecycleOwner, Observer { pokeResult ->
+        sharedViewModel.loadPokemonById.observe(viewLifecycleOwner, Observer { pokeResult ->
             if (pokeResult.data != null) {
-                viewModel.pokemon.value = pokeResult.data
+                sharedViewModel.pokemon.value = pokeResult.data
                 setupText(binding, pokeResult.data)
             }
         })
@@ -62,10 +63,10 @@ class PokemonDetailFragment : DialogFragment() {
         }
 
         // set up pager
-        adapter = DemoCollectionAdapter(this, viewModel.pokemonId.value!!)
+        adapter = DemoCollectionAdapter(this, sharedViewModel.pokemonId.value!!)
         binding.pokemonDetailPager.adapter = adapter
 
-        binding.pokemonDetailPager.setCurrentItem(1, false)
+        binding.pokemonDetailPager.setCurrentItem(0, false)
 
         return binding.root
     }

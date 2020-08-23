@@ -16,11 +16,7 @@ class DemoCollectionAdapter(fragment: Fragment, pokemonId: Int) : FragmentStateA
     private var currentFragment: Fragment? = null
 
     private val aboutFragment by lazy { PokemonDetailAboutFragment() }
-    private val statsFragment by lazy { PokemonDetailStatsFragment().apply {
-        this.arguments = Bundle().apply {
-            putInt(PokemonDetailStatsFragment.POKEMON_ID, pokemonId)
-        }
-    } }
+    private val statsFragment = PokemonDetailStatsFragment()
     private val formsFragment by lazy { PokemonDetailFormsFragment() }
     private val movesFragment by lazy { PokemonDetailMovesFragment() }
 
