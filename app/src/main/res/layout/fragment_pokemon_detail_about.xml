@@ -23,6 +23,10 @@
         <variable
             name="weight"
             type="String" />
+
+        <variable
+            name="eggGroup"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -201,7 +205,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:text="Monster, Plant"
+                    android:text="@{eggGroup}"
+                    tools:text="Monster, Plant"
                     android:textColor="@color/text"
                     android:textStyle="bold" />
             </LinearLayout>

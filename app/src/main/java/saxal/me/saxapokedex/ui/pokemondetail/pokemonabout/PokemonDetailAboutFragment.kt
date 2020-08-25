@@ -51,7 +51,8 @@ class PokemonDetailAboutFragment: Fragment() {
         binding.percentFemale = pokemonSpecieData.femalePercentage
         binding.percentMale = pokemonSpecieData.malePercentage
 
-        binding.height = sharedViewModel.pokemon.value?.height?.toString() ?: "0"
+        binding.height = sharedViewModel.pokemon.value?.displayHeight
         binding.weight = sharedViewModel.pokemon.value?.displayWeight
+        binding.eggGroup = pokemonSpecieData.displayEggGroup
     }
 }

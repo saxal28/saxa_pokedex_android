@@ -37,12 +37,23 @@ data class PokemonSpecies(
     val gender_rate: Int,
     val hatch_counter: Int
 ) {
+
+    private val IS_SEXLESS = -1
+
     // gender_rate is based on an eighth (1/8 === 12.5% Female)
     private val baseGender = 8.00
-    val femalePercentage = "${(gender_rate.toDouble() / baseGender) * 100}%"
-    val malePercentage = "${((baseGender - gender_rate) / baseGender) * 100}%"
+    val femalePercentage = if (gender_rate == IS_SEXLESS) "--" else {
+        "${(gender_rate.toDouble() / baseGender) * 100}%"
+    }
+
+    val malePercentage = if (gender_rate == IS_SEXLESS) "--" else {
+        "${((baseGender - gender_rate) / baseGender) * 100}%"
+    }
+
 
     val defaultFlavorText = flavor_text_entries
         .last { it.language.name == "en" }.flavor_text
         .replace(Regex("\n"), " ")
+
+    val displayEggGroup = egg_groups.joinToString(", ") { it.name.capitalize() }
 }

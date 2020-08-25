@@ -178,7 +178,10 @@ data class Pokemon(
         }
 
     val displayName: String
-        get() = name.capitalize()
+        get() = name
+            .capitalize()
+//            .replace(Regex("-m"), "♂")
+//            .replace(Regex("-f"), "♀")
 
     // weight is in hectograms
     val displayWeight: String
@@ -189,9 +192,16 @@ data class Pokemon(
             return "$lbs lbs (${kg}kg)"
         }
 
+    // height is in decimeters
     val displayHeight: String
     get() {
-        return ""
+        val totalInches = (height.toDouble() * 3.93701).roundTo(2)
+        val feet = (totalInches / 12).roundToInt()
+        val centimeters = (totalInches / 2.54).roundTo(2)
+        val inches = (totalInches % 12).roundToInt().toString()
+        val inchesDisplay = if(inches.length == 1) "0$inches" else inches
+
+        return "${feet}\' ${inchesDisplay}\" ($centimeters cm)"
     }
 }
 
