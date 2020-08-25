@@ -31,28 +31,7 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
-        <LinearLayout
-            tools:visibility="visible"
-            android:visibility="gone"
-            android:id="@+id/loader"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alpha="0.6"
-            android:background="@color/text"
-            android:orientation="vertical"
-            android:gravity="center"
-            >
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="@android:style/Widget.Holo.ProgressBar.Large"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center" />
-
-        </LinearLayout>
-
+        <include android:id="@+id/loader" layout="@layout/page_loader" />
     </RelativeLayout>
 
 </layout>

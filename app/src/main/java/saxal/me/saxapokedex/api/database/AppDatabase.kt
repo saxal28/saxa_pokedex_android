@@ -5,17 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import saxal.me.saxapokedex.api.database.dao.PokemonDao
-import saxal.me.saxapokedex.api.database.entity.PokemonEntity
-import saxal.me.saxapokedex.api.database.entity.PokemonSpritesEntity
-import saxal.me.saxapokedex.api.database.entity.PokemonStatsEntity
-import saxal.me.saxapokedex.api.database.entity.PokemonTypesEntity
+import saxal.me.saxapokedex.api.database.entity.*
 
 
 @Database(entities = [
     PokemonEntity::class,
     PokemonTypesEntity::class,
     PokemonStatsEntity::class,
-    PokemonSpritesEntity::class
+    PokemonSpritesEntity::class,
+    PokemonAbilitiesEntity::class
 ], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun pokemonDao(): PokemonDao

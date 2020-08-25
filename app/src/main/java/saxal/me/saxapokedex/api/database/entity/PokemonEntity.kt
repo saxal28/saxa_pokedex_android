@@ -70,10 +70,31 @@ data class PokemonStatsEntity(
 }
 
 @Entity
+data class PokemonAbilitiesEntity(
+    @PrimaryKey(autoGenerate = true) val abilityId: Long = 0,
+    val pokemonOwnerId: Long,
+    val name: String,
+    val url: String,
+    val is_hidden: Boolean
+) {
+    fun mapToUIModel() = AbilityDetail(
+        is_hidden = this.is_hidden,
+        ability = Ability(
+            name = this.name,
+            url = this.url
+        )
+    )
+}
+
+@Entity
 data class PokemonEntity(
     @PrimaryKey val pokemonId: Long,
     var modified: Long = Date().time,
-    val name: String
+    val name: String,
+    val height: Int,
+    val weight: Int,
+    val order: Int,
+    val base_experience: Int
 )
 
 @Entity
@@ -95,7 +116,13 @@ data class PokemonWithTypesEntity(
         parentColumn = "pokemonId",
         entityColumn = "pokemonOwnerId"
     )
-    val sprites: PokemonSpritesEntity
+    val sprites: PokemonSpritesEntity,
+
+    @Relation(
+        parentColumn = "pokemonId",
+        entityColumn = "pokemonOwnerId"
+    )
+    val abilities: List<PokemonAbilitiesEntity>
 
 ) {
     fun mapToUIModel() = Pokemon(
@@ -103,6 +130,11 @@ data class PokemonWithTypesEntity(
         name = this.pokemon.name,
         sprites = this.sprites.mapToUIModel(),
         types = this.types.map { it.mapToUIModel() },
-        stats = this.stats.map { it.mapToUIModel() }
+        stats = this.stats.map { it.mapToUIModel() },
+        abilities = this.abilities.map { it.mapToUIModel() },
+        height = this.pokemon.height,
+        weight = this.pokemon.weight,
+        base_experience = this.pokemon.base_experience,
+        order = this.pokemon.order
     )
 }

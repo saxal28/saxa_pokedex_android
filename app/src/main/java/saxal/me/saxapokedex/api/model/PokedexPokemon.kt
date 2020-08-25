@@ -6,6 +6,8 @@ import saxal.me.saxapokedex.api.database.entity.PokemonEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonSpritesEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonStatsEntity
 import saxal.me.saxapokedex.api.database.entity.PokemonTypesEntity
+import saxal.me.saxapokedex.util.roundTo
+import kotlin.math.roundToInt
 
 @JsonClass(generateAdapter = true)
 data class PokedexPokemonResults(
@@ -41,6 +43,12 @@ data class Types(
 // Stats
 @JsonClass(generateAdapter = true)
 data class Stat(
+    val name: String,
+    var url: String
+)
+
+@JsonClass(generateAdapter = true)
+data class NameUrl(
     val name: String,
     var url: String
 )
@@ -110,16 +118,38 @@ data class Sprites(
 }
 
 @JsonClass(generateAdapter = true)
+data class Ability (
+    val name: String,
+    val url: String
+)
+
+@JsonClass(generateAdapter = true)
+data class AbilityDetail (
+    val ability: Ability,
+    val is_hidden: Boolean
+)
+
+@JsonClass(generateAdapter = true)
 data class Pokemon(
     val id: Int,
     val name: String,
     val types: List<Types>,
     val stats: List<Stats>,
-    val sprites: Sprites
+    val sprites: Sprites,
+    val height: Int,
+    val weight: Int,
+    val order: Int,
+    val base_experience: Int,
+    val abilities: List<AbilityDetail>
+
 ) {
     fun mapToEntity() = PokemonEntity(
         pokemonId = this.id.toLong(),
-        name = this.name
+        name = this.name,
+        weight = this.weight,
+        height = this.height,
+        order = this.order,
+        base_experience = this.base_experience
     )
 
     val primaryType = types[0].type.name
@@ -150,4 +180,18 @@ data class Pokemon(
     val displayName: String
         get() = name.capitalize()
 
+    // weight is in hectograms
+    val displayWeight: String
+        get() {
+            val lbs = (weight.toDouble() / 4.5359237).roundTo(1)// there is 4.5 hecto per lbs
+            val kg = (weight.toDouble() / 10.0).roundTo(1) // 1kg === 10 hecto
+
+            return "$lbs lbs (${kg}kg)"
+        }
+
+    val displayHeight: String
+    get() {
+        return ""
+    }
 }
+

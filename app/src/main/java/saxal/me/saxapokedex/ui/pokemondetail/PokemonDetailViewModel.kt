@@ -19,4 +19,12 @@ class PokemonDetailViewModel: ViewModel() {
            MutableLiveData(PokeResult())
         }
     }
+
+    val loadPokemonSpecieDetailsById = pokemonId.switchMap { pokemonId ->
+        if(pokemonId != null) {
+            pokemonRepository.getPokemonSpecieDetails(pokemonId)
+        } else {
+            MutableLiveData(PokeResult())
+        }
+    }
 }

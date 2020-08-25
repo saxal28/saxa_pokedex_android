@@ -22,27 +22,29 @@
         <TextView
             android:id="@+id/statLabel"
             android:layout_width="130dp"
+
             android:layout_height="wrap_content"
-
             android:text="@{name}"
-            android:textColor="@color/text"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textAlignment="viewStart"
+            android:textColor="@color/textGray"
 
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Special Defense" />
 
         <TextView
             android:id="@+id/statValue"
-            android:layout_width="30dp"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            tools:text="180"
             android:textColor="@color/text"
             android:textSize="18sp"
+            android:textStyle="bold"
+
             app:layout_constraintStart_toEndOf="@id/statLabel"
-            app:layout_constraintTop_toTopOf="@id/statLabel" />
+            app:layout_constraintTop_toTopOf="@id/statLabel"
+            tools:text="180" />
 
         <saxal.me.saxapokedex.ui.customfields.ProgressField
             android:layout_width="0dp"
