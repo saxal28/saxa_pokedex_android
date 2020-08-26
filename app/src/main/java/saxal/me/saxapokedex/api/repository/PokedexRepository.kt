@@ -85,10 +85,21 @@ class PokedexRepository {
     // GET POKEMON SPECIES DETAILS
     fun getPokemonSpecieDetails(pokemonId: Int) = liveData {
         try {
+
             emit(PokeResult(loading = LoadingStatus.LOADING))
-            // TODO: cache
-            val details = pokeService.getPokemonSpecies(pokemonId).await()
-            emit(PokeResult(loading = LoadingStatus.FINISHED, data = details))
+
+            // Find cached version, if exists and emit
+            val foundPokemonSpecies = CacheService.getPokemonSpecies(pokemonId)
+
+            if(foundPokemonSpecies != null) {
+                Log.i("SPECIES", "loading from disk")
+                emit(PokeResult(loading = LoadingStatus.FINISHED, data = foundPokemonSpecies))
+            } else {
+                Log.i("SPECIES", "loading from api and saving")
+                val details = pokeService.getPokemonSpecies(pokemonId).await()
+                CacheService.savePokemonSpecies(details.mapToEntity(pokemonId))
+                emit(PokeResult(loading = LoadingStatus.FINISHED, data = details))
+            }
 
         } catch (e: Exception) {
             Log.e("GET", "e: $e")

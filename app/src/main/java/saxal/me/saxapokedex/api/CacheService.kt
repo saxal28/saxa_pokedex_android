@@ -4,7 +4,9 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import saxal.me.saxapokedex.api.database.Database
+import saxal.me.saxapokedex.api.database.entity.PokemonSpeciesEntity
 import saxal.me.saxapokedex.api.model.Pokemon
+import saxal.me.saxapokedex.api.model.PokemonSpecies
 import java.lang.Exception
 
 class CacheService {
@@ -61,6 +63,36 @@ class CacheService {
                     Log.i("EX", e.message ?: "db error")
                 }
             }
+        }
+
+        suspend fun savePokemonSpecies(data: PokemonSpeciesEntity) {
+            withContext(Dispatchers.IO) {
+                try {
+                    val dao = Database.instance?.pokemonDao()!!
+                    // insert pokeSpecies
+                    dao.insertPokemonSpecies(data.pokemonSpecies)
+                    // save egg groups
+                    dao.insertEggGroups(data.egg_groups)
+                    // save flavor entries
+                    dao.insertFlavorTextEntries(data.flavor_text_entries)
+                } catch (e: Exception) {
+
+                }
+            }
+        }
+        suspend fun getPokemonSpecies(pokemonId: Int): PokemonSpecies? {
+            var species: PokemonSpecies? = null
+
+            withContext(Dispatchers.IO) {
+                try {
+                    val dao = Database.instance?.pokemonDao()!!
+                    val data = dao.getPokemonSpecies(pokemonId)
+                    species = data?.mapToUIModel()
+                } catch (e: Exception) {
+
+                }
+            }
+            return species
         }
     }
 }

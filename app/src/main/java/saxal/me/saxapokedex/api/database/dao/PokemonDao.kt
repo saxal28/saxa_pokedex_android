@@ -27,4 +27,19 @@ interface PokemonDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertStats(stats: List<PokemonStatsEntity>)
+
+    // Pokemon About
+    @Transaction
+    @Query("SELECT * FROM PokemonSpecieEntity where pokemonId == :id")
+    fun getPokemonSpecies(id: Int): PokemonSpeciesEntity?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPokemonSpecies(pokemonSpecies: PokemonSpecieEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertEggGroups(eggGroups: List<EggGroupEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertFlavorTextEntries(entries: List<FlavorTextEntryEntity>)
+
 }

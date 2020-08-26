@@ -68,6 +68,8 @@ class PokemonDetailFragment : DialogFragment() {
 
         binding.pokemonDetailPager.setCurrentItem(0, false)
 
+        binding.scrollView.scrollTo(0,0)
+
         return binding.root
     }
 

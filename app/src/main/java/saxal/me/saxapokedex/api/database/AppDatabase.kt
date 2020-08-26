@@ -13,7 +13,10 @@ import saxal.me.saxapokedex.api.database.entity.*
     PokemonTypesEntity::class,
     PokemonStatsEntity::class,
     PokemonSpritesEntity::class,
-    PokemonAbilitiesEntity::class
+    PokemonAbilitiesEntity::class,
+    PokemonSpecieEntity::class,
+    FlavorTextEntryEntity::class,
+    EggGroupEntity::class
 ], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun pokemonDao(): PokemonDao
