@@ -49,6 +49,8 @@ class PokedexRepository {
                 val endTime = Timestamp.time()
                 Timestamp.getTimestampDifference(startTime, endTime)
 
+
+
                 emit(
                     PokeListResult(
                         loading = LoadingStatus.FINISHED,

@@ -19,6 +19,7 @@ class TypesId {
         const val FAIRY = "fairy"
         const val NORMAL = "normal"
         const val BUG = "bug"
+        const val UNKNOWN = "unknown"
     }
 }
 

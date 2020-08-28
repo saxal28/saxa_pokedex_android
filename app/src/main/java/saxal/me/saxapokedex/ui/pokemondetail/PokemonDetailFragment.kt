@@ -68,8 +68,6 @@ class PokemonDetailFragment : DialogFragment() {
 
         binding.pokemonDetailPager.setCurrentItem(0, false)
 
-        binding.scrollView.scrollTo(0,0)
-
         return binding.root
     }
 
@@ -114,6 +112,7 @@ class PokemonDetailFragment : DialogFragment() {
     private fun setupPokemonDetailsUI(binding: FragmentPokemonDetailBinding, type: String) {
         val resource = PokemonTypeResources.forType(type)
         setupUIForType(binding, resource)
+
     }
 
 }

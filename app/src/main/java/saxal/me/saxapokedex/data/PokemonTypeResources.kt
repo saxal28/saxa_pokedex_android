@@ -127,10 +127,18 @@ class PokemonTypeResources {
                 backgroundColorResourceId = R.color.bug,
                 pokeballResourceId = R.drawable.card_pokeball_bug,
                 tagResourceId = R.drawable.card_tag_bug
+            ),
+            PokemonTypeResource(
+                type = TypesId.UNKNOWN,
+                pokedexBackgroundResourceId = R.drawable.card_bg_unknown,
+                backgroundColorResourceId = R.color.unknown,
+                pokeballResourceId = R.drawable.card_pokeball_unknown,
+                tagResourceId = R.drawable.card_tag_unknown
             )
+
         )
 
-        fun forType(type: String): PokemonTypeResource = data.find { it.type == type }!!
+        fun forType(type: String): PokemonTypeResource = data.firstOrNull { it.type == type } ?: data.find { it.type == TypesId.UNKNOWN }!!
     }
 }
 
