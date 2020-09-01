@@ -16,7 +16,7 @@ async function fetchUrl(url){
 }
 
 async function fetchAllPokemon() {
-    const allPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
+    const allPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     const allPokemon = await allPokemonResponse.json()
     return allPokemon.results
 }

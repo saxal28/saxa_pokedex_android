@@ -6,23 +6,23 @@ import kotlin.math.roundToInt
 
 @JsonClass(generateAdapter = true)
 data class EvolutionDetails(
-    val gender: String? = null,
-    val held_item: String? = null,
-    val item: String? = null,
-    val known_move: String? = null,
-    val known_move_type: String? = null,
-    val location: String? = null,
-    val min_affection: String? = null,
-    val min_beauty: String? = null,
-    val min_happiness:  String? = null,
+    val gender: Int? = null,
+    val held_item: NamedApiResource? = null,
+    val item: NamedApiResource? = null,
+    val known_move: NamedApiResource? = null,
+    val known_move_type: NamedApiResource? = null,
+    val location: NamedApiResource? = null,
+    val min_affection: Int? = null,
+    val min_beauty: Int? = null,
+    val min_happiness:  Int? = null,
     val min_level: Int? = null,
     val needs_overworld_rain: Boolean? = null,
-    val party_species:  String? = null,
-    val party_type:  String? = null,
-    val relative_physical_stats:  String? = null,
+    val party_species:  NamedApiResource? = null,
+    val party_type:  NamedApiResource? = null,
+    val relative_physical_stats:  Int? = null,
     val time_of_day:  String? = null,
-    val trade_species:  String? = null,
-    val trigger: NameUrl? = null,
+    val trade_species:  NamedApiResource? = null,
+    val trigger: NamedApiResource? = null,
     val turn_upside_down: Boolean? = null
 )
 
@@ -31,7 +31,7 @@ data class EvolutionChain(
     val evolves_to: List<EvolutionChain>,
     val evolution_details: List<EvolutionDetails>,
     val is_baby: Boolean,
-    val species: NameUrl
+    val species: NamedApiResource
 )
 
 @JsonClass(generateAdapter = true)
@@ -43,7 +43,7 @@ data class EvolutionChainFetched(
 @JsonClass(generateAdapter = true)
 data class GameIndex(
     val game_index: Int,
-    val version: NameUrl
+    val version: NamedApiResource
 )
 
 @JsonClass(generateAdapter = true)

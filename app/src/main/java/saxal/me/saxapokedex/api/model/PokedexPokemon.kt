@@ -48,7 +48,7 @@ data class Stat(
 )
 
 @JsonClass(generateAdapter = true)
-data class NameUrl(
+data class NamedApiResource(
     val name: String,
     var url: String
 )
