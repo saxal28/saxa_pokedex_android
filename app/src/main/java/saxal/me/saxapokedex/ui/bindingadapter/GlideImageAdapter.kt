@@ -10,7 +10,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.transition.DrawableCrossFadeTransition
 import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.request.transition.TransitionFactory
+import kotlinx.android.synthetic.main.page_loader.view.*
 import saxal.me.saxapokedex.MainActivity
+import saxal.me.saxapokedex.R
 
 
 class DrawableAlwaysCrossFadeFactory : TransitionFactory<Drawable> {
@@ -32,11 +34,13 @@ fun getProgressBarIndeterminate(): Drawable? {
     }
 }
 
+//.transition(DrawableTransitionOptions.with(DrawableAlwaysCrossFadeFactory()))
+//.placeholder(getProgressBarIndeterminate())
+
 @BindingAdapter("profileImage")
 fun loadImage(view: ImageView, imageUrl: String?) {
     Glide.with(view.context)
         .load(imageUrl)
-        .transition(DrawableTransitionOptions.with(DrawableAlwaysCrossFadeFactory()))
-        .placeholder(getProgressBarIndeterminate())
+        .placeholder(R.drawable.ic_poke_shadow)
         .into(view)
 }

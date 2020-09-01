@@ -10,13 +10,18 @@ const log = (message) => console.log(`\n===================\n\n${message}.....\n
 // ===================
 
 async function fetchUrl(url){
-    const pokemonDataResponse = await fetch(url)
-    const pokemonData = await pokemonDataResponse.json()
-    return pokemonData
+    try {
+        const pokemonDataResponse = await fetch(url)
+        const pokemonData = await pokemonDataResponse.json()
+        return pokemonData
+    } catch(e) {
+        console.log({e})
+        return {}
+    }
 }
 
 async function fetchAllPokemon() {
-    const allPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+    const allPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2000")
     const allPokemon = await allPokemonResponse.json()
     return allPokemon.results
 }
