@@ -9,10 +9,10 @@ import saxal.me.saxapokedex.api.database.entity.PokemonTypesEntity
 import saxal.me.saxapokedex.util.roundTo
 import kotlin.math.roundToInt
 
-@JsonClass(generateAdapter = true)
-data class PokedexPokemonResults(
-    val results: List<PokedexPokemon>
-)
+//@JsonClass(generateAdapter = true)
+//data class PokedexPokemonResults(
+//    val results: List<PokedexPokemon>
+//)
 
 @JsonClass(generateAdapter = true)
 data class PokedexPokemon(
@@ -141,7 +141,6 @@ data class Pokemon(
     val order: Int,
     val base_experience: Int,
     val abilities: List<AbilityDetail>
-
 ) {
     fun mapToEntity() = PokemonEntity(
         pokemonId = this.id.toLong(),

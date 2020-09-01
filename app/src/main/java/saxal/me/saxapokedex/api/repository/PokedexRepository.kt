@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import kotlinx.coroutines.*
 import retrofit2.*
 import saxal.me.saxapokedex.api.CacheService
+import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.pokeService
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.constants.LoadingStatus
@@ -16,59 +17,78 @@ import java.util.concurrent.ConcurrentLinkedQueue
 
 class PokedexRepository {
 
-    // coroutine + live data
-    val allPokemon: LiveData<PokeListResult<Pokemon>> = liveData {
-
+    // TODO: making design decision to fetch generated JSON pokemon
+    val listPokemon = liveData<PokeListResult<JsonPokemon>> {
         emit(PokeListResult(loading = LoadingStatus.LOADING))
-        val startTime = Timestamp.time()
-
-        val cachedPokemon = CacheService.loadPokemon()
-
-        if(cachedPokemon.isNotEmpty()) {
-            // use cached pokemon
-            emit(PokeListResult(loading = LoadingStatus.FINISHED, data = cachedPokemon))
-        } else {
-            try {
-                var list: List<Pokemon>
-
-                val pokemon = pokeService.listPokemon().await()
-                val lstOfReturnData = ConcurrentLinkedQueue<Response<Pokemon>>()
-
-                coroutineScope {
-                    pokemon.results.map { it.name }.forEach { name ->
-                        launch(Dispatchers.IO) {
-                            lstOfReturnData.add(pokeService.getPokemonInfo(name).execute())
-                        }
-                    }
-                }
-
-                list = lstOfReturnData.map { it.body()!! }.sortedBy { it.id }
-
-                CacheService.savePokemon(list)
-
-                val endTime = Timestamp.time()
-                Timestamp.getTimestampDifference(startTime, endTime)
-
-
-
-                emit(
-                    PokeListResult(
-                        loading = LoadingStatus.FINISHED,
-                        data = list
-                    )
+        try {
+            val pokemon = pokeService.listPokemon().await()
+            Log.i("MockJsonInterceptor", pokemon.results.toString())
+            emit(PokeListResult(loading = LoadingStatus.FINISHED, data = pokemon.results))
+        } catch (e: Exception) {
+            Log.d("ERROR", e.message.toString())
+            emit(
+                PokeListResult(
+                    loading = LoadingStatus.FINISHED,
+                    errorMessage = e.message ?: "Error!"
                 )
-
-            } catch (exception: Exception) {
-                Log.e("Exception", "$exception")
-                emit(
-                    PokeListResult(
-                        loading = LoadingStatus.FINISHED,
-                        errorMessage = exception.message ?: "Error!"
-                    )
-                )
-            }
+            )
         }
     }
+
+
+    // coroutine + live data
+//    val allPokemon: LiveData<PokeListResult<Pokemon>> = liveData {
+//
+//        emit(PokeListResult(loading = LoadingStatus.LOADING))
+//        val startTime = Timestamp.time()
+//
+//        val cachedPokemon = CacheService.loadPokemon()
+//
+//        if(cachedPokemon.isNotEmpty()) {
+//            // use cached pokemon
+//            emit(PokeListResult(loading = LoadingStatus.FINISHED, data = cachedPokemon))
+//        } else {
+//            try {
+//                var list: List<Pokemon>
+//
+//                val pokemon = pokeService.listPokemon().await()
+//                val lstOfReturnData = ConcurrentLinkedQueue<Response<Pokemon>>()
+//
+//                coroutineScope {
+//                    pokemon.results.map { it.name }.forEach { name ->
+//                        launch(Dispatchers.IO) {
+//                            lstOfReturnData.add(pokeService.getPokemonInfo(name).execute())
+//                        }
+//                    }
+//                }
+//
+//                list = lstOfReturnData.map { it.body()!! }.sortedBy { it.id }
+//
+//                CacheService.savePokemon(list)
+//
+//                val endTime = Timestamp.time()
+//                Timestamp.getTimestampDifference(startTime, endTime)
+//
+//
+//
+//                emit(
+//                    PokeListResult(
+//                        loading = LoadingStatus.FINISHED,
+//                        data = list
+//                    )
+//                )
+//
+//            } catch (exception: Exception) {
+//                Log.e("Exception", "$exception")
+//                emit(
+//                    PokeListResult(
+//                        loading = LoadingStatus.FINISHED,
+//                        errorMessage = exception.message ?: "Error!"
+//                    )
+//                )
+//            }
+//        }
+//    }
 
     // GET / Pokemon by Id
     fun getPokemonById(pokemonId: Int): LiveData<PokeResult<Pokemon>> = liveData {
@@ -93,7 +113,7 @@ class PokedexRepository {
             // Find cached version, if exists and emit
             val foundPokemonSpecies = CacheService.getPokemonSpecies(pokemonId)
 
-            if(foundPokemonSpecies != null) {
+            if (foundPokemonSpecies != null) {
                 Log.i("SPECIES", "loading from disk")
                 emit(PokeResult(loading = LoadingStatus.FINISHED, data = foundPokemonSpecies))
             } else {

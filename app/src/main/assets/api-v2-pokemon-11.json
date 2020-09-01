@@ -1,29 +1,30 @@
 {
-  "result": {
-    "name": "caterpie",
-    "id": 10,
-    "order": 14,
-    "height": 3,
-    "weight": 29,
-    "base_experience": 39,
+  "results": {
+    "name": "metapod",
+    "id": 11,
+    "order": 15,
+    "height": 7,
+    "weight": 99,
+    "base_experience": 72,
     "base_happiness": 70,
-    "capture_rate": 255,
+    "capture_rate": 120,
+    "gender_rate": 4,
     "sprites": {
-      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/10.png",
+      "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/11.png",
       "back_female": null,
-      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/10.png",
+      "back_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/11.png",
       "back_shiny_female": null,
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/10.png",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/11.png",
       "front_female": null,
-      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/10.png",
+      "front_shiny": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/11.png",
       "front_shiny_female": null,
       "other": {
         "dream_world": {
-          "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/10.svg",
+          "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/11.svg",
           "front_female": null
         },
         "official-artwork": {
-          "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10.png"
+          "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/11.png"
         }
       }
     },
@@ -44,15 +45,15 @@
     ],
     "stats": [
       {
-        "base_stat": 45,
-        "effort": 1,
+        "base_stat": 50,
+        "effort": 0,
         "stat": {
           "name": "hp",
           "url": "https://pokeapi.co/api/v2/stat/1/"
         }
       },
       {
-        "base_stat": 30,
+        "base_stat": 20,
         "effort": 0,
         "stat": {
           "name": "attack",
@@ -60,15 +61,15 @@
         }
       },
       {
-        "base_stat": 35,
-        "effort": 0,
+        "base_stat": 55,
+        "effort": 2,
         "stat": {
           "name": "defense",
           "url": "https://pokeapi.co/api/v2/stat/3/"
         }
       },
       {
-        "base_stat": 20,
+        "base_stat": 25,
         "effort": 0,
         "stat": {
           "name": "special-attack",
@@ -76,7 +77,7 @@
         }
       },
       {
-        "base_stat": 20,
+        "base_stat": 25,
         "effort": 0,
         "stat": {
           "name": "special-defense",
@@ -84,7 +85,7 @@
         }
       },
       {
-        "base_stat": 45,
+        "base_stat": 30,
         "effort": 0,
         "stat": {
           "name": "speed",
@@ -92,142 +93,152 @@
         }
       }
     ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "shed-skin",
+          "url": "https://pokeapi.co/api/v2/ability/61/"
+        },
+        "is_hidden": false,
+        "slot": 1
+      }
+    ],
     "game_indices": [
       {
-        "game_index": 123,
+        "game_index": 124,
         "version": {
           "name": "red",
           "url": "https://pokeapi.co/api/v2/version/1/"
         }
       },
       {
-        "game_index": 123,
+        "game_index": 124,
         "version": {
           "name": "blue",
           "url": "https://pokeapi.co/api/v2/version/2/"
         }
       },
       {
-        "game_index": 123,
+        "game_index": 124,
         "version": {
           "name": "yellow",
           "url": "https://pokeapi.co/api/v2/version/3/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "gold",
           "url": "https://pokeapi.co/api/v2/version/4/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "silver",
           "url": "https://pokeapi.co/api/v2/version/5/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "crystal",
           "url": "https://pokeapi.co/api/v2/version/6/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "ruby",
           "url": "https://pokeapi.co/api/v2/version/7/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "sapphire",
           "url": "https://pokeapi.co/api/v2/version/8/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "emerald",
           "url": "https://pokeapi.co/api/v2/version/9/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "firered",
           "url": "https://pokeapi.co/api/v2/version/10/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "leafgreen",
           "url": "https://pokeapi.co/api/v2/version/11/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "diamond",
           "url": "https://pokeapi.co/api/v2/version/12/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "pearl",
           "url": "https://pokeapi.co/api/v2/version/13/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "platinum",
           "url": "https://pokeapi.co/api/v2/version/14/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "heartgold",
           "url": "https://pokeapi.co/api/v2/version/15/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "soulsilver",
           "url": "https://pokeapi.co/api/v2/version/16/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "black",
           "url": "https://pokeapi.co/api/v2/version/17/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "white",
           "url": "https://pokeapi.co/api/v2/version/18/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "black-2",
           "url": "https://pokeapi.co/api/v2/version/21/"
         }
       },
       {
-        "game_index": 10,
+        "game_index": 11,
         "version": {
           "name": "white-2",
           "url": "https://pokeapi.co/api/v2/version/22/"
@@ -237,326 +248,10 @@
     "moves": [
       {
         "move": {
-          "name": "tackle",
-          "url": "https://pokeapi.co/api/v2/move/33/"
-        },
-        "version_group_details": [
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "red-blue",
-              "url": "https://pokeapi.co/api/v2/version-group/1/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "yellow",
-              "url": "https://pokeapi.co/api/v2/version-group/2/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "gold-silver",
-              "url": "https://pokeapi.co/api/v2/version-group/3/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "crystal",
-              "url": "https://pokeapi.co/api/v2/version-group/4/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "ruby-sapphire",
-              "url": "https://pokeapi.co/api/v2/version-group/5/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "emerald",
-              "url": "https://pokeapi.co/api/v2/version-group/6/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "firered-leafgreen",
-              "url": "https://pokeapi.co/api/v2/version-group/7/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "diamond-pearl",
-              "url": "https://pokeapi.co/api/v2/version-group/8/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "platinum",
-              "url": "https://pokeapi.co/api/v2/version-group/9/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "heartgold-soulsilver",
-              "url": "https://pokeapi.co/api/v2/version-group/10/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "black-white",
-              "url": "https://pokeapi.co/api/v2/version-group/11/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "colosseum",
-              "url": "https://pokeapi.co/api/v2/version-group/12/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "xd",
-              "url": "https://pokeapi.co/api/v2/version-group/13/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "black-2-white-2",
-              "url": "https://pokeapi.co/api/v2/version-group/14/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "x-y",
-              "url": "https://pokeapi.co/api/v2/version-group/15/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "omega-ruby-alpha-sapphire",
-              "url": "https://pokeapi.co/api/v2/version-group/16/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "sun-moon",
-              "url": "https://pokeapi.co/api/v2/version-group/17/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "ultra-sun-ultra-moon",
-              "url": "https://pokeapi.co/api/v2/version-group/18/"
-            }
-          }
-        ]
-      },
-      {
-        "move": {
           "name": "string-shot",
           "url": "https://pokeapi.co/api/v2/move/81/"
         },
         "version_group_details": [
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "red-blue",
-              "url": "https://pokeapi.co/api/v2/version-group/1/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "yellow",
-              "url": "https://pokeapi.co/api/v2/version-group/2/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "gold-silver",
-              "url": "https://pokeapi.co/api/v2/version-group/3/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "crystal",
-              "url": "https://pokeapi.co/api/v2/version-group/4/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "ruby-sapphire",
-              "url": "https://pokeapi.co/api/v2/version-group/5/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "emerald",
-              "url": "https://pokeapi.co/api/v2/version-group/6/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "firered-leafgreen",
-              "url": "https://pokeapi.co/api/v2/version-group/7/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "diamond-pearl",
-              "url": "https://pokeapi.co/api/v2/version-group/8/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "platinum",
-              "url": "https://pokeapi.co/api/v2/version-group/9/"
-            }
-          },
-          {
-            "level_learned_at": 1,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "heartgold-soulsilver",
-              "url": "https://pokeapi.co/api/v2/version-group/10/"
-            }
-          },
           {
             "level_learned_at": 0,
             "move_learn_method": {
@@ -567,9 +262,237 @@
               "name": "heartgold-soulsilver",
               "url": "https://pokeapi.co/api/v2/version-group/10/"
             }
+          }
+        ]
+      },
+      {
+        "move": {
+          "name": "harden",
+          "url": "https://pokeapi.co/api/v2/move/106/"
+        },
+        "version_group_details": [
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "red-blue",
+              "url": "https://pokeapi.co/api/v2/version-group/1/"
+            }
           },
           {
             "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "yellow",
+              "url": "https://pokeapi.co/api/v2/version-group/2/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "yellow",
+              "url": "https://pokeapi.co/api/v2/version-group/2/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "gold-silver",
+              "url": "https://pokeapi.co/api/v2/version-group/3/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "gold-silver",
+              "url": "https://pokeapi.co/api/v2/version-group/3/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "crystal",
+              "url": "https://pokeapi.co/api/v2/version-group/4/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "crystal",
+              "url": "https://pokeapi.co/api/v2/version-group/4/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "ruby-sapphire",
+              "url": "https://pokeapi.co/api/v2/version-group/5/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "ruby-sapphire",
+              "url": "https://pokeapi.co/api/v2/version-group/5/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "emerald",
+              "url": "https://pokeapi.co/api/v2/version-group/6/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "emerald",
+              "url": "https://pokeapi.co/api/v2/version-group/6/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "firered-leafgreen",
+              "url": "https://pokeapi.co/api/v2/version-group/7/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "firered-leafgreen",
+              "url": "https://pokeapi.co/api/v2/version-group/7/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "diamond-pearl",
+              "url": "https://pokeapi.co/api/v2/version-group/8/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "diamond-pearl",
+              "url": "https://pokeapi.co/api/v2/version-group/8/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "platinum",
+              "url": "https://pokeapi.co/api/v2/version-group/9/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "platinum",
+              "url": "https://pokeapi.co/api/v2/version-group/9/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "heartgold-soulsilver",
+              "url": "https://pokeapi.co/api/v2/version-group/10/"
+            }
+          },
+          {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "heartgold-soulsilver",
+              "url": "https://pokeapi.co/api/v2/version-group/10/"
+            }
+          },
+          {
+            "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "black-white",
+              "url": "https://pokeapi.co/api/v2/version-group/11/"
+            }
+          },
+          {
+            "level_learned_at": 7,
             "move_learn_method": {
               "name": "level-up",
               "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
@@ -591,7 +514,29 @@
             }
           },
           {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "colosseum",
+              "url": "https://pokeapi.co/api/v2/version-group/12/"
+            }
+          },
+          {
             "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "xd",
+              "url": "https://pokeapi.co/api/v2/version-group/13/"
+            }
+          },
+          {
+            "level_learned_at": 7,
             "move_learn_method": {
               "name": "level-up",
               "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
@@ -613,7 +558,29 @@
             }
           },
           {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "black-2-white-2",
+              "url": "https://pokeapi.co/api/v2/version-group/14/"
+            }
+          },
+          {
             "level_learned_at": 1,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "x-y",
+              "url": "https://pokeapi.co/api/v2/version-group/15/"
+            }
+          },
+          {
+            "level_learned_at": 7,
             "move_learn_method": {
               "name": "level-up",
               "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
@@ -635,6 +602,28 @@
             }
           },
           {
+            "level_learned_at": 7,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "omega-ruby-alpha-sapphire",
+              "url": "https://pokeapi.co/api/v2/version-group/16/"
+            }
+          },
+          {
+            "level_learned_at": 0,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "sun-moon",
+              "url": "https://pokeapi.co/api/v2/version-group/17/"
+            }
+          },
+          {
             "level_learned_at": 1,
             "move_learn_method": {
               "name": "level-up",
@@ -643,6 +632,17 @@
             "version_group": {
               "name": "sun-moon",
               "url": "https://pokeapi.co/api/v2/version-group/17/"
+            }
+          },
+          {
+            "level_learned_at": 0,
+            "move_learn_method": {
+              "name": "level-up",
+              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
+            },
+            "version_group": {
+              "name": "ultra-sun-ultra-moon",
+              "url": "https://pokeapi.co/api/v2/version-group/18/"
             }
           },
           {
@@ -660,8 +660,8 @@
       },
       {
         "move": {
-          "name": "snore",
-          "url": "https://pokeapi.co/api/v2/move/173/"
+          "name": "iron-defense",
+          "url": "https://pokeapi.co/api/v2/move/334/"
         },
         "version_group_details": [
           {
@@ -717,28 +717,6 @@
         },
         "version_group_details": [
           {
-            "level_learned_at": 15,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "platinum",
-              "url": "https://pokeapi.co/api/v2/version-group/9/"
-            }
-          },
-          {
-            "level_learned_at": 15,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "heartgold-soulsilver",
-              "url": "https://pokeapi.co/api/v2/version-group/10/"
-            }
-          },
-          {
             "level_learned_at": 0,
             "move_learn_method": {
               "name": "tutor",
@@ -747,28 +725,6 @@
             "version_group": {
               "name": "heartgold-soulsilver",
               "url": "https://pokeapi.co/api/v2/version-group/10/"
-            }
-          },
-          {
-            "level_learned_at": 15,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "black-white",
-              "url": "https://pokeapi.co/api/v2/version-group/11/"
-            }
-          },
-          {
-            "level_learned_at": 15,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "black-2-white-2",
-              "url": "https://pokeapi.co/api/v2/version-group/14/"
             }
           },
           {
@@ -783,28 +739,6 @@
             }
           },
           {
-            "level_learned_at": 15,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "x-y",
-              "url": "https://pokeapi.co/api/v2/version-group/15/"
-            }
-          },
-          {
-            "level_learned_at": 15,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "omega-ruby-alpha-sapphire",
-              "url": "https://pokeapi.co/api/v2/version-group/16/"
-            }
-          },
-          {
             "level_learned_at": 0,
             "move_learn_method": {
               "name": "tutor",
@@ -813,28 +747,6 @@
             "version_group": {
               "name": "omega-ruby-alpha-sapphire",
               "url": "https://pokeapi.co/api/v2/version-group/16/"
-            }
-          },
-          {
-            "level_learned_at": 9,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "sun-moon",
-              "url": "https://pokeapi.co/api/v2/version-group/17/"
-            }
-          },
-          {
-            "level_learned_at": 9,
-            "move_learn_method": {
-              "name": "level-up",
-              "url": "https://pokeapi.co/api/v2/move-learn-method/1/"
-            },
-            "version_group": {
-              "name": "ultra-sun-ultra-moon",
-              "url": "https://pokeapi.co/api/v2/version-group/18/"
             }
           }
         ]
@@ -872,7 +784,7 @@
     ],
     "flavor_text_entries": [
       {
-        "flavor_text": "Its short feet\nare tipped with\nsuction pads that\fenable it to\ntirelessly climb\nslopes and walls.",
+        "flavor_text": "This POKéMON is\nvulnerable to\nattack while its\fshell is soft,\nexposing its weak\nand tender body.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -883,7 +795,7 @@
         }
       },
       {
-        "flavor_text": "Its short feet\nare tipped with\nsuction pads that\fenable it to\ntirelessly climb\nslopes and walls.",
+        "flavor_text": "This POKéMON is\nvulnerable to\nattack while its\fshell is soft,\nexposing its weak\nand tender body.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -894,7 +806,7 @@
         }
       },
       {
-        "flavor_text": "If you touch the\nfeeler on top of\nits head, it will\frelease a horrible\nstink to protect\nitself.",
+        "flavor_text": "Hardens its shell\nto protect itself.\nHowever, a large\fimpact may cause\nit to pop out of\nits shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -905,7 +817,7 @@
         }
       },
       {
-        "flavor_text": "For protection, it\nreleases a horri­\nble stench from\fthe antenna on its\nhead to drive away\nenemies.",
+        "flavor_text": "Inside the shell,\nit is soft and\nweak as it pre­\fpares to evolve.\nIt stays motion­\nless in the shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -916,7 +828,7 @@
         }
       },
       {
-        "flavor_text": "Its feet have\nsuction cups\ndesigned to stick\fto any surface. It\ntenaciously climbs\ntrees to forage.",
+        "flavor_text": "It prepares for\nevolution by har­\ndening its shell\fas much as possi­\nble to protect its\nsoft body.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -927,7 +839,7 @@
         }
       },
       {
-        "flavor_text": "It crawls into\nfoliage where it\ncamouflages itself\famong leaves that\nare the same color\nas its body.",
+        "flavor_text": "This is its pre-\nevolved form. At\nthis stage, it can\fonly harden, so it\nremains motionless\nto avoid attack.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -938,7 +850,7 @@
         }
       },
       {
-        "flavor_text": "CATERPIE has a voracious appetite.\nIt can devour leaves bigger than its\nbody right before your eyes.\fFrom its antenna, this POKéMON releases\na terrifically strong odor.",
+        "flavor_text": "The shell covering this POKéMON’s body\nis as hard as an iron slab.\nMETAPOD does not move very much.\fIt stays still because it is preparing\nits soft innards for evolution inside\nthe hard shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -949,7 +861,7 @@
         }
       },
       {
-        "flavor_text": "CATERPIE has a voracious appetite.\nIt can devour leaves bigger than its\nbody right before your eyes.\fFrom its antenna, this POKéMON releases\na terrifically strong odor.",
+        "flavor_text": "The shell covering this POKéMON’s body\nis as hard as an iron slab.\nMETAPOD does not move very much.\fIt stays still because it is preparing\nits soft innards for evolution inside\nthe hard shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -960,7 +872,7 @@
         }
       },
       {
-        "flavor_text": "Its voracious appetite compels it to\ndevour leaves bigger than itself without\nhesitation. It releases a terribly strong\nodor from its antennae.",
+        "flavor_text": "Its shell is as hard as an iron slab.\nA METAPOD does not move very much\nbecause it is preparing its soft innards\nfor evolution inside the shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -971,7 +883,7 @@
         }
       },
       {
-        "flavor_text": "It is covered with a green skin. When it\ngrows, it sheds the skin, covers itself\nwith silk, and becomes a cocoon.",
+        "flavor_text": "Even though it is encased in a sturdy\nshell, the body inside is tender.\nIt can’t withstand a harsh attack.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -982,7 +894,7 @@
         }
       },
       {
-        "flavor_text": "Its short feet are tipped with suction\npads that enable it to tirelessly climb\nslopes and walls.",
+        "flavor_text": "This POKéMON is vulnerable to attack\nwhile its shell is soft, exposing its weak\nand tender body.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -993,7 +905,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1004,7 +916,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1015,7 +927,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1026,7 +938,7 @@
         }
       },
       {
-        "flavor_text": "For protection, it releases a horrible\nstench from the antennae on its\nhead to drive away enemies.",
+        "flavor_text": "Inside the shell, it is soft and\nweak as it prepares to evolve.\nIt stays motionless in the shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1037,7 +949,7 @@
         }
       },
       {
-        "flavor_text": "Its feet have suction cups\ndesigned to stick to any surface. It\ntenaciously climbs trees to forage.",
+        "flavor_text": "It prepares for evolution by hardening\nits shell as much as possible\nto protect its soft body.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1048,7 +960,7 @@
         }
       },
       {
-        "flavor_text": "Ses antennes rouges libèrent une\npuanteur qui repousse l’ennemi.\nIl grandit par mues régulières.",
+        "flavor_text": "Son corps frêle est protégé par sa\ncarapace d’acier. Il encaisse les\ncoups durs en attendant d’évoluer.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1059,7 +971,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1070,7 +982,7 @@
         }
       },
       {
-        "flavor_text": "Ses antennes rouges libèrent une\npuanteur qui repousse l’ennemi.\nIl grandit par mues régulières.",
+        "flavor_text": "Son corps frêle est protégé par sa\ncarapace d’acier. Il encaisse les\ncoups durs en attendant d’évoluer.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1081,7 +993,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1092,7 +1004,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1103,7 +1015,7 @@
         }
       },
       {
-        "flavor_text": "It releases a stench from its red\nantenna to repel enemies. It\ngrows by molting repeatedly.",
+        "flavor_text": "A steel-hard shell protects its\ntender body. It quietly endures\nhardships while awaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1114,7 +1026,7 @@
         }
       },
       {
-        "flavor_text": "あたまの　しょっかく　から\nきょうれつな　においを　だして\nてきを　おいはらい　みをまもる。",
+        "flavor_text": "こうてつのように　かたい　カラで\nやわらかい　なかみを　まもっている。\nしんかするまで　じっと　たえている。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1125,7 +1037,7 @@
         }
       },
       {
-        "flavor_text": "머리의 더듬이로부터\n강렬한 냄새를 내어\n적을 물리치고 몸을 보호한다.",
+        "flavor_text": "강철같이 단단한 껍질로\n부드러운 몸을 보호하고 있다.\n진화할 때까지 가만히 참고 있다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1136,7 +1048,7 @@
         }
       },
       {
-        "flavor_text": "Pour se protéger, il émet un gaz puant par ses\nantennes, qui fait fuir ses ennemis audacieux.",
+        "flavor_text": "Son corps frêle est protégé par sa carapace d’acier.\nIl encaisse les coups durs en attendant d’évoluer.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1147,7 +1059,7 @@
         }
       },
       {
-        "flavor_text": "Als Schutz vor Feinden sondert es einen übel\nriechenden Gestank mit seinen Antennen ab.",
+        "flavor_text": "Der stahlharte Panzer schützt seinen zarten Körper.\nEs wartet geduldig auf seine Entwicklung.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1158,7 +1070,7 @@
         }
       },
       {
-        "flavor_text": "Para protegerse despide un hedor horrible de sus\nantenas, con el que repele a sus enemigos.",
+        "flavor_text": "Su frágil cuerpo está recubierto de una coraza dura\ncomo el acero. Permanece quieto en su desarrollo.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1169,7 +1081,7 @@
         }
       },
       {
-        "flavor_text": "Per proteggersi emette un puzzo terribile\ndall’antenna sul capo, tenendo lontani i nemici.",
+        "flavor_text": "Ha una corazza dura come l’acciaio che protegge\nil suo fragile corpo. Attende immobile di evolversi.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1180,7 +1092,7 @@
         }
       },
       {
-        "flavor_text": "For protection, it releases a horrible stench from\nthe antennae on its head to drive away enemies.",
+        "flavor_text": "A steel-hard shell protects its tender body.\nIt quietly endures hardships while\nawaiting evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1191,7 +1103,7 @@
         }
       },
       {
-        "flavor_text": "頭の　触覚から\n強烈な　においを　出して\n敵を　追い払い　身を守る。",
+        "flavor_text": "鋼鉄のように　硬い　殻で\nやわらかい　中身を　守っている。\n進化するまで　じっと　耐えている。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1202,7 +1114,7 @@
         }
       },
       {
-        "flavor_text": "あしの　さきは　どんなところにも\nすいつく　きゅうばん。ひっしに\nきのぼりをして　はっぱを　たべる。",
+        "flavor_text": "カラが　かたくなるまえに\nつよい　しょうげきを　うけると\nなかみが　でてしまうので　ちゅうい。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1213,7 +1125,7 @@
         }
       },
       {
-        "flavor_text": "발끝에는 어디든지\n달라붙는 빨판이 있다. 필사적으로\n나무 타기를 해서 나뭇잎을 먹는다.",
+        "flavor_text": "껍질이 단단해지기 전에\n강한 충격을 받으면\n속이 나와버리니 주의.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1224,7 +1136,7 @@
         }
       },
       {
-        "flavor_text": "Ses pattes ont des ventouses lui permettant de\ngrimper sur toute surface, notamment les arbres.",
+        "flavor_text": "Il est vulnérable aux attaques tant que sa carapace\nest molle, car il expose son corps tendre et mou.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1235,7 +1147,7 @@
         }
       },
       {
-        "flavor_text": "Die Saugnäpfe an den Beinen haften auf jedem\nUntergrund. Es sucht hartnäckig in Bäumen\nnach Futter.",
+        "flavor_text": "Während der Panzer dieses Pokémon sehr weich ist,\nbietet er keinen großen Schutz vor Attacken.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1246,7 +1158,7 @@
         }
       },
       {
-        "flavor_text": "Sus patas tienen ventosas con las que se adhiere a\ncualquier sitio. Escala árboles buscando forraje.",
+        "flavor_text": "Este Pokémon es vulnerable al ataque cuando su\ncoraza es blanda y no lo protege del todo.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1257,7 +1169,7 @@
         }
       },
       {
-        "flavor_text": "Le sue zampe hanno ventose che possono aderire\na ogni superficie. Sale sugli alberi cercando cibo.",
+        "flavor_text": "Quando la sua corazza è morbida, il corpo fragile di\nquesto Pokémon è più vulnerabile agli attacchi.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1268,7 +1180,7 @@
         }
       },
       {
-        "flavor_text": "Its feet have suction cups designed to stick to any\nsurface. It tenaciously climbs trees to forage.",
+        "flavor_text": "This Pokémon is vulnerable to attack while its shell\nis soft, exposing its weak and tender body.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1279,7 +1191,7 @@
         }
       },
       {
-        "flavor_text": "足の　先は　どんなところにも\n吸いつく　吸盤。必死に\n木登りをして　葉っぱを　食べる。",
+        "flavor_text": "殻が　硬くなる前に\n強い　衝撃を　受けると\n中身が　出てしまうので　注意。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1290,7 +1202,7 @@
         }
       },
       {
-        "flavor_text": "からだ　よりも　おおきな　はっぱを　みるみる\nたべつくして　しまうほどの　しょくよくを　もつ。\nしょっかくから　きょうれつな　においを　だすぞ。",
+        "flavor_text": "からだの　カラは　てっぱんの　ように　かたい。\nあまり　うごかないのは　カラのなかで　やわらかい\nなかみが　しんかの　じゅんびを　しているからだ。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1301,7 +1213,7 @@
         }
       },
       {
-        "flavor_text": "몸보다 커다란 잎사귀를 순식간에\n먹어치울 정도의 식욕을 지녔다.\n더듬이로 강렬한 냄새를 피운다.",
+        "flavor_text": "몸의 껍질은 철판처럼 단단하다.\n움직임이 적은 것은 껍질 안에서 부드러운\n몸이 진화 준비를 하고 있어서다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1312,7 +1224,7 @@
         }
       },
       {
-        "flavor_text": "Chenipan a un appétit d’ogre. Il peut engloutir des feuilles\nplus grosses que lui. Les antennes de ce Pokémon dégagent\nune odeur particulièrement entêtante.",
+        "flavor_text": "La carapace protégeant ce Pokémon est dure comme du\nmétal. Chrysacier ne bouge pas beaucoup. Il reste immobile\npour préparer les organes à l’intérieur de sa carapace en vue\nd’une évolution future.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1323,7 +1235,7 @@
         }
       },
       {
-        "flavor_text": "Raupy ist sehr gefräßig, es kann Blätter verschlingen,\ndie größer sind als es selbst. Seine Antennen sondern\neinen übel riechenden Gestank ab.",
+        "flavor_text": "Der Panzer dieses Pokémon ist hart wie Stahl. Safcon bewegt\nsich kaum, da es das weiche Innere unter seiner harten Schale\nauf seine Entwicklung vorbereitet.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1334,7 +1246,7 @@
         }
       },
       {
-        "flavor_text": "Caterpie tiene un apetito voraz. Es capaz de devorar hojas\nque superen su tamaño en un abrir y cerrar de ojos.\nAtención a la antena que tiene: libera un hedor realmente\nfuerte.",
+        "flavor_text": "La capa que recubre el cuerpo de este Pokémon es tan dura\ncomo una plancha de hierro. Metapod apenas se mueve.\nPermanece inmóvil para que las vísceras evolucionen dentro\nde la coraza que le rodea.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1345,7 +1257,7 @@
         }
       },
       {
-        "flavor_text": "Caterpie mangia voracemente. È in grado di divorare foglie\npiù grandi del suo stesso corpo in pochi istanti.\nQuesto Pokémon emette un odore terrificante dalle antenne.",
+        "flavor_text": "La corazza di questo Pokémon è dura come una lastra\ndi ferro. Metapod non si muove molto. Sta immobile per\npreparare il morbido interno della dura corazza all’evoluzione.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1356,7 +1268,7 @@
         }
       },
       {
-        "flavor_text": "Caterpie has a voracious appetite. It can devour leaves bigger\nthan its body right before your eyes. From its antenna, this\nPokémon releases a terrifically strong odor.",
+        "flavor_text": "The shell covering this Pokémon’s body is as hard as an\niron slab. Metapod does not move very much. It stays still\nbecause it is preparing its soft innards for evolution inside\nthe hard shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1367,7 +1279,7 @@
         }
       },
       {
-        "flavor_text": "体　よりも　大きな　葉っぱを　みるみる\n食べつくして　しまうほどの　食欲を　もつ。\n触角から　強烈な　臭いを　出すぞ。",
+        "flavor_text": "体の　カラは　鉄板の　ように　硬い。\nあまり　動かないのは　カラの中で　柔らかい\n中身が　進化の　準備を　しているからだ。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1378,7 +1290,7 @@
         }
       },
       {
-        "flavor_text": "からだ　よりも　おおきな　はっぱを　みるみる\nたべつくして　しまうほどの　しょくよくを　もつ。\nしょっかくから　きょうれつな　においを　だすぞ。",
+        "flavor_text": "からだの　カラは　てっぱんの　ように　かたい。\nあまり　うごかないのは　カラのなかで　やわらかい\nなかみが　しんかの　じゅんびを　しているからだ。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1389,7 +1301,7 @@
         }
       },
       {
-        "flavor_text": "몸보다 커다란 잎사귀를 순식간에\n먹어치울 정도의 식욕을 지녔다.\n더듬이로 강렬한 냄새를 피운다.",
+        "flavor_text": "몸의 껍질은 철판처럼 단단하다.\n움직임이 적은 것은 껍질 안에서 부드러운\n몸이 진화 준비를 하고 있어서다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1400,7 +1312,7 @@
         }
       },
       {
-        "flavor_text": "Chenipan a un appétit d’ogre. Il peut engloutir des feuilles\nplus grosses que lui. Les antennes de ce Pokémon dégagent\nune odeur particulièrement entêtante.",
+        "flavor_text": "La carapace protégeant ce Pokémon est dure comme du\nmétal. Chrysacier ne bouge pas beaucoup. Il reste immobile\npour préparer les organes à l’intérieur de sa carapace en vue\nd’une évolution future.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1411,7 +1323,7 @@
         }
       },
       {
-        "flavor_text": "Raupy ist sehr gefräßig. Es kann Blätter verschlingen,\ndie seine eigene Größe um ein Vielfaches übersteigen.\nSeine Antennen sondern einen übel riechenden Gestank ab.",
+        "flavor_text": "Der Panzer dieses Pokémon ist hart wie Stahl. Safcon bewegt\nsich kaum, da es das weiche Innere unter seiner harten Schale\nauf seine Entwicklung vorbereitet.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1422,7 +1334,7 @@
         }
       },
       {
-        "flavor_text": "Caterpie tiene un apetito voraz. Es capaz de devorar hojas\nque superen su tamaño en un abrir y cerrar de ojos.\nAtención a la antena que tiene: libera un hedor realmente\nfuerte.",
+        "flavor_text": "La capa que recubre el cuerpo de este Pokémon es tan dura\ncomo una plancha de hierro. Metapod apenas se mueve.\nPermanece inmóvil para que las vísceras evolucionen dentro\nde la coraza que le rodea.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1433,7 +1345,7 @@
         }
       },
       {
-        "flavor_text": "Caterpie mangia voracemente. È in grado di divorare foglie\npiù grandi del suo stesso corpo in pochi istanti.\nQuesto Pokémon emette un odore terrificante dalle antenne.",
+        "flavor_text": "La corazza di questo Pokémon è dura come una lastra\ndi ferro. Metapod non si muove molto. Sta immobile per\npreparare il morbido interno della dura corazza all’evoluzione.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1444,7 +1356,7 @@
         }
       },
       {
-        "flavor_text": "Caterpie has a voracious appetite. It can devour leaves\nbigger than its body right before your eyes. From its antenna,\nthis Pokémon releases a terrifically strong odor.",
+        "flavor_text": "The shell covering this Pokémon’s body is as hard as an\niron slab. Metapod does not move very much.\nIt stays still because it is preparing its soft innards for\nevolution inside the hard shell.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1455,7 +1367,7 @@
         }
       },
       {
-        "flavor_text": "体　よりも　大きな　葉っぱを　みるみる\n食べつくして　しまうほどの　食欲を　もつ。\n触角から　強烈な　臭いを　出すぞ。",
+        "flavor_text": "体の　カラは　鉄板の　ように　硬い。\nあまり　動かないのは　カラの中で　柔らかい\n中身が　進化の　準備を　しているからだ。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1466,7 +1378,7 @@
         }
       },
       {
-        "flavor_text": "とりポケモンに　おそわれると　ツノから\nにおいを　だして　ていこう　するが\nえじきに　なることも　おおい。",
+        "flavor_text": "カラのなかには　トロトロの　なかみが\nつまっている。　ほぼ　うごかないのは\nウッカリ　なかみが　こぼれないため。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1477,7 +1389,7 @@
         }
       },
       {
-        "flavor_text": "새포켓몬에게 습격당하면 뿔에서\n냄새를 뿜어 저항하지만\n먹이가 되는 일도 많다.",
+        "flavor_text": "껍질 안은 부드러운 내용물로 가득 차 있다.\n거의 움직이지 않는 것은 무심코\n내용물이 흘러나오게 하지 않기 위해서다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1488,7 +1400,7 @@
         }
       },
       {
-        "flavor_text": "被鳥寶可夢襲擊時，\n會從觸角釋放出臭氣抵抗，\n但還是經常淪為獵物。",
+        "flavor_text": "殼中塞滿了軟綿綿的身體。\n幾乎動也不動是為了防止\n身體在不留神時露出來。",
         "language": {
           "name": "zh-Hant",
           "url": "https://pokeapi.co/api/v2/language/4/"
@@ -1499,7 +1411,7 @@
         }
       },
       {
-        "flavor_text": "Lorsqu’il est attaqué par un Pokémon Vol,\nil utilise ses antennes pour dégager une odeur\nnauséabonde, mais cela le sauve rarement.",
+        "flavor_text": "Sous sa carapace, il est tout mou et tendre.\nIl bouge très peu afin de ne pas secouer son\ncorps encore fragile.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1510,7 +1422,7 @@
         }
       },
       {
-        "flavor_text": "Es versucht, angreifende Vogel-Pokémon mit\ndem Gestank aus seinen Antennen in die Flucht\nzu schlagen. Das gelingt ihm aber nicht immer.",
+        "flavor_text": "Sein harter Panzer birgt ein weiches Inneres.\nUm zu vermeiden, dass dieses versehentlich\nausläuft, bewegt es sich kaum.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1521,7 +1433,7 @@
         }
       },
       {
-        "flavor_text": "A menudo resulta presa de Pokémon pájaro,\nfrente a los que su única defensa es el hedor\nrepulsivo que libera por su antena.",
+        "flavor_text": "La dura capa que le recubre el cuerpo protege\nsus delicadas vísceras. Metapod apenas se\nmueve para evitar que estas se desparramen.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1532,7 +1444,7 @@
         }
       },
       {
-        "flavor_text": "Tenta di difendersi dai Pokémon alati\nemettendo un forte fetore dalle antenne,\nma cade spesso vittima dei loro attacchi.",
+        "flavor_text": "La corazza racchiude un corpo estremamente\nmolle e il Pokémon si muove appena per paura\nche fuoriesca accidentalmente.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1543,7 +1455,7 @@
         }
       },
       {
-        "flavor_text": "When attacked by bird Pokémon, it resists by\nreleasing a terrifically strong odor from its\nantennae, but it often becomes their prey.",
+        "flavor_text": "Its shell is filled with its soft innards. It doesn’t\nmove much because of the risk it might\ncarelessly spill its innards out.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1554,7 +1466,7 @@
         }
       },
       {
-        "flavor_text": "とりポケモンに　襲われると　ツノから\n臭いを　だして　抵抗　するが\n餌食に　なることも　多い。",
+        "flavor_text": "カラの中には　トロトロの　中身が\n詰まっている。　ほぼ動かないのは\nウッカリ　中身が　こぼれないため。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1565,7 +1477,7 @@
         }
       },
       {
-        "flavor_text": "被鸟宝可梦袭击时\n会从触角中释放出臭气抵抗，\n但也经常会成为鸟食。",
+        "flavor_text": "壳中藏着软乎乎的身体。\n几乎不动是为了防止\n身体一不留神就露出来。",
         "language": {
           "name": "zh-Hans",
           "url": "https://pokeapi.co/api/v2/language/12/"
@@ -1576,7 +1488,7 @@
         }
       },
       {
-        "flavor_text": "つかまえやすく　せいちょうも　はやい。\nしんまいトレーナーの　パートナーに\nおススメの　ポケモンの　いっぴき。",
+        "flavor_text": "かたいと　いっても　むしの　カラ。\nわれてしまうことも　あるので\nはげしい　たたかいは　きんもつ。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1587,7 +1499,7 @@
         }
       },
       {
-        "flavor_text": "잡기 쉽고 성장도 빠르다.\n새내기 트레이너의 파트너로\n추천하는 포켓몬 중 한 마리.",
+        "flavor_text": "단단하다고는 해도 벌레의 껍질.\n갈라질 수도 있으므로\n격렬한 싸움은 금물이다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1598,7 +1510,7 @@
         }
       },
       {
-        "flavor_text": "易於捕捉，成長速度亦快。\n是推薦給新手訓練家\n作為同伴的寶可夢之一。",
+        "flavor_text": "雖說堅硬，但還是蟲的外殼。\n有時還是會破裂的，\n所以禁止用於激烈的戰鬥。",
         "language": {
           "name": "zh-Hant",
           "url": "https://pokeapi.co/api/v2/language/4/"
@@ -1609,7 +1521,7 @@
         }
       },
       {
-        "flavor_text": "Un Pokémon facile à attraper et qui croît\nrapidement. C’est l’un des partenaires\nprivilégiés des Dresseurs débutants.",
+        "flavor_text": "Même si sa carapace est solide, elle n’est guère\ncomposée que de chitine et peut se briser\naisément. Mieux vaut éviter les combats rudes.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1620,7 +1532,7 @@
         }
       },
       {
-        "flavor_text": "Es eignet sich bestens für frischgebackene\nTrainer, da es sich leicht fangen lässt und\nsich sehr schnell entwickelt.",
+        "flavor_text": "Sein Panzer ist zwar hart, aber dennoch anfällig\nfür Risse, da es ein Käfer-Pokémon ist.\nFür schwere Kämpfe ist es daher ungeeignet.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1631,7 +1543,7 @@
         }
       },
       {
-        "flavor_text": "Se desarrolla rápidamente y es fácil de atrapar.\nEs el compañero ideal para Entrenadores menos\nexperimentados.",
+        "flavor_text": "Su coraza es muy dura, pero no deja de estar\nhecha de quitina, por lo que podría quebrarse.\nEs mejor no llevarlo en combates muy intensos.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1642,7 +1554,7 @@
         }
       },
       {
-        "flavor_text": "È facile da catturare e cresce in fretta.\nÈ uno dei Pokémon più indicati per gli Allenatori\nin erba.",
+        "flavor_text": "La sua corazza è piuttosto dura per un\nPokémon Coleottero, ma potrebbe comunque\nrompersi. Meglio evitare lotte troppo veementi.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1653,7 +1565,7 @@
         }
       },
       {
-        "flavor_text": "It’s easy to catch, and it grows quickly, making\nit one of the top recommendations for novice\nPokémon Trainers.",
+        "flavor_text": "Its shell is hard, but it’s still just a bug shell.\nIt’s been known to break, so intense battles\nwith it should be avoided.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1664,7 +1576,7 @@
         }
       },
       {
-        "flavor_text": "捕まえやすく　成長も　早い。\n新米トレーナーの　パートナーに\nおススメの　ポケモンの　一匹。",
+        "flavor_text": "硬いと　いっても　虫の　殻。\n割れてしまうことも　あるので\n激しい　戦いは　禁物。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1675,7 +1587,7 @@
         }
       },
       {
-        "flavor_text": "易于捕捉，成长也快。\n是推荐给新手训练家\n作为同伴的宝可梦之一。",
+        "flavor_text": "虽说坚硬，但还是虫的外壳。\n因为有时也会破裂，\n所以禁止用于激烈的战斗。",
         "language": {
           "name": "zh-Hans",
           "url": "https://pokeapi.co/api/v2/language/12/"
@@ -1686,7 +1598,7 @@
         }
       },
       {
-        "flavor_text": "はやく　せいちょう　したいのか\nしょくよくおうせいで　１にちに\n１００まいの　はっぱを　くらう。",
+        "flavor_text": "カラのなかは　ドロドロの　えきたい。\nしんかに　そなえて　からだじゅうの\nさいぼうを　つくりなおしている。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1697,7 +1609,7 @@
         }
       },
       {
-        "flavor_text": "빨리 성장하고 싶어서인지\n식욕이 왕성하여 하루에\n100장의 잎사귀를 먹는다.",
+        "flavor_text": "껍질 안은 걸쭉한 액체다.\n진화를 대비하여 몸 전체의\n세포를 재구성하고 있다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1708,7 +1620,7 @@
         }
       },
       {
-        "flavor_text": "或許是為了讓自己快點成長，\n牠的食慾非常旺盛，\n每天要吃掉１００片樹葉。",
+        "flavor_text": "殼裡面是黏糊糊的液體。\n為了準備迎接進化，\n正不斷更新全身的細胞。",
         "language": {
           "name": "zh-Hant",
           "url": "https://pokeapi.co/api/v2/language/4/"
@@ -1719,7 +1631,7 @@
         }
       },
       {
-        "flavor_text": "C’est peut-être parce qu’il a envie de grandir\nle plus vite possible qu’il est si vorace.\nIl engloutit une centaine de feuilles par jour.",
+        "flavor_text": "Sa carapace contient un liquide gluant.\nSa structure cellulaire est en cours de\nmodification en vue de son évolution prochaine.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1730,7 +1642,7 @@
         }
       },
       {
-        "flavor_text": "Das nimmersatte Raupy verschlingt 100 Blätter\nam Tag. Vermutlich strebt es so ein schnelleres\nWachstum an.",
+        "flavor_text": "Sein Panzer birgt ein dickflüssiges Inneres.\nIn Vorbereitung auf seine Entwicklung wird seine\nZellstruktur vollständig umgestaltet.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1741,7 +1653,7 @@
         }
       },
       {
-        "flavor_text": "Muestra un apetito voraz, debido quizás a sus\nganas de acelerar su desarrollo. Puede llegar a\ndevorar un centenar de hojas al día.",
+        "flavor_text": "El interior del caparazón es un líquido viscoso.\nTodas las células de su cuerpo se están\nregenerando en preparación para su evolución.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1752,7 +1664,7 @@
         }
       },
       {
-        "flavor_text": "Mangia 100 foglie al giorno. La sua voracità\npotrebbe essere dovuta al desiderio di crescere\nin fretta.",
+        "flavor_text": "La sua corazza contiene un liquido vischioso.\nRistruttura tutte le cellule del suo corpo\npreparandosi all’evoluzione.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1763,7 +1675,7 @@
         }
       },
       {
-        "flavor_text": "Perhaps because it would like to grow up\nquickly, it has a voracious appetite, eating\na hundred leaves a day.",
+        "flavor_text": "Its shell is filled with a thick liquid. All of the\ncells throughout its body are being rebuilt in\npreparation for evolution.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1774,7 +1686,7 @@
         }
       },
       {
-        "flavor_text": "早く　成長　したいのか\n食欲旺盛で　１日に\n１００枚の　葉っぱを　食らう。",
+        "flavor_text": "カラの中は　ドロドロの　液体。\n進化に　備えて　体中の\n細胞を　作りなおしている。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1785,7 +1697,7 @@
         }
       },
       {
-        "flavor_text": "或许是想要尽快长大，\n它的食欲非常旺盛，\n每天能吃掉１００片叶子。",
+        "flavor_text": "壳里面是黏糊糊的液体。\n为了准备迎接进化，\n正在不断地更新体内的细胞。",
         "language": {
           "name": "zh-Hans",
           "url": "https://pokeapi.co/api/v2/language/12/"
@@ -1796,7 +1708,7 @@
         }
       },
       {
-        "flavor_text": "からだは　やわらかく　ちからもない。\nしぜんかいでは　つねに　エサとして\nねらわれ　つづける　うんめい。",
+        "flavor_text": "とても　かたいカラは　ツツケラに\nつつかれても　びくともしないが\nゆれて　なかみが　こぼれてしまう。",
         "language": {
           "name": "ja-Hrkt",
           "url": "https://pokeapi.co/api/v2/language/1/"
@@ -1807,7 +1719,7 @@
         }
       },
       {
-        "flavor_text": "몸은 부드럽고 힘도 없다.\n자연계에서는 항상 먹이로\n노려지게 될 운명이다.",
+        "flavor_text": "매우 단단한 껍질은 콕코구리가\n쪼아도 꿈쩍도 하지 않지만 흔들림에\n약해서 내용물이 흘러나와 버린다.",
         "language": {
           "name": "ko",
           "url": "https://pokeapi.co/api/v2/language/3/"
@@ -1818,7 +1730,7 @@
         }
       },
       {
-        "flavor_text": "身體柔軟，又沒什麼力氣。\n在自然界，牠的命運就是\n不斷被當成獵物來捕食。",
+        "flavor_text": "外殼非常堅硬，就算被\n小篤兒啄到也能平安無事，\n但殼裡的身體會因為晃動而流出來。",
         "language": {
           "name": "zh-Hant",
           "url": "https://pokeapi.co/api/v2/language/4/"
@@ -1829,7 +1741,7 @@
         }
       },
       {
-        "flavor_text": "Son corps est mou et sans force.\nLa nature semble l’avoir destiné à servir\nde proie aux autres Pokémon.",
+        "flavor_text": "Sa carapace est très solide et résiste sans\npeine aux assauts des Picassaut. Si elle bascule,\npar contre, son contenu s’éparpille au sol.",
         "language": {
           "name": "fr",
           "url": "https://pokeapi.co/api/v2/language/5/"
@@ -1840,7 +1752,7 @@
         }
       },
       {
-        "flavor_text": "Sein weicher und schwacher Körper ist ein\nallseits beliebtes Futter. Es muss sich daher\nstets vor Angreifern in Acht nehmen.",
+        "flavor_text": "Ein Schnabelangriff von Peppeck kann Safcons\nhartem Panzer nichts anhaben, doch wenn es\nzu schaukeln beginnt, läuft sein Inneres aus.",
         "language": {
           "name": "de",
           "url": "https://pokeapi.co/api/v2/language/6/"
@@ -1851,7 +1763,7 @@
         }
       },
       {
-        "flavor_text": "Su cuerpo es blando y carente de fuerza. Parece\nque la naturaleza lo hubiera destinado a servir\nde sustento a otros Pokémon.",
+        "flavor_text": "Su dura coraza resiste los picotazos de un\nPikipek, pero, si se agita mucho, su contenido\npuede verterse por el suelo.",
         "language": {
           "name": "es",
           "url": "https://pokeapi.co/api/v2/language/7/"
@@ -1862,7 +1774,7 @@
         }
       },
       {
-        "flavor_text": "Il suo corpo è molle e privo di forza.\nMolto spesso il suo destino in natura è\ndi cadere preda di altri Pokémon.",
+        "flavor_text": "La sua dura corazza resiste anche alle beccate\ndei Pikipek ma, se oscilla troppo, il contenuto\npuò fuoriuscire.",
         "language": {
           "name": "it",
           "url": "https://pokeapi.co/api/v2/language/8/"
@@ -1873,7 +1785,7 @@
         }
       },
       {
-        "flavor_text": "Its body is soft and weak. In nature, its\nperpetual fate is to be seen by others as food.",
+        "flavor_text": "Its hard shell doesn’t crack a bit even if Pikipek\npecks at it, but it will tip over, spilling out\nits insides.",
         "language": {
           "name": "en",
           "url": "https://pokeapi.co/api/v2/language/9/"
@@ -1884,7 +1796,7 @@
         }
       },
       {
-        "flavor_text": "身体は　柔らかく　力もない。\n自然界では　常に　エサとして\n狙われ　続ける　運命。",
+        "flavor_text": "とても　硬いカラは　ツツケラに\n突かれても　びくともしないが\n揺れて　中身が　こぼれてしまう。",
         "language": {
           "name": "ja",
           "url": "https://pokeapi.co/api/v2/language/11/"
@@ -1895,7 +1807,7 @@
         }
       },
       {
-        "flavor_text": "身体软绵绵的，也没什么力气。\n在自然界，它的命运就是作为\n猎物而被不断捕食。",
+        "flavor_text": "外壳非常坚硬，即使受到\n小笃儿的啄击也能安然无恙，\n但壳里的身体会因晃动而流出来。",
         "language": {
           "name": "zh-Hans",
           "url": "https://pokeapi.co/api/v2/language/12/"
@@ -1909,7 +1821,10 @@
     "evolution_chain": {
       "url": "https://pokeapi.co/api/v2/evolution-chain/4/"
     },
-    "evolves_from_species": null,
+    "evolves_from_species": {
+      "name": "caterpie",
+      "url": "https://pokeapi.co/api/v2/pokemon-species/10/"
+    },
     "evolution_chain_fetched": {
       "baby_trigger_item": null,
       "chain": {

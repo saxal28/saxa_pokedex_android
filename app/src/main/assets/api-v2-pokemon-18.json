@@ -1,5 +1,5 @@
 {
-  "result": {
+  "results": {
     "name": "pidgeot",
     "id": 18,
     "order": 23,
@@ -8,6 +8,7 @@
     "base_experience": 216,
     "base_happiness": 70,
     "capture_rate": 45,
+    "gender_rate": 4,
     "sprites": {
       "back_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/18.png",
       "back_female": null,
@@ -97,6 +98,32 @@
           "name": "speed",
           "url": "https://pokeapi.co/api/v2/stat/6/"
         }
+      }
+    ],
+    "abilities": [
+      {
+        "ability": {
+          "name": "keen-eye",
+          "url": "https://pokeapi.co/api/v2/ability/51/"
+        },
+        "is_hidden": false,
+        "slot": 1
+      },
+      {
+        "ability": {
+          "name": "tangled-feet",
+          "url": "https://pokeapi.co/api/v2/ability/77/"
+        },
+        "is_hidden": false,
+        "slot": 2
+      },
+      {
+        "ability": {
+          "name": "big-pecks",
+          "url": "https://pokeapi.co/api/v2/ability/145/"
+        },
+        "is_hidden": true,
+        "slot": 3
       }
     ],
     "game_indices": [

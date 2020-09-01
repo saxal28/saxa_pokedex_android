@@ -61,15 +61,15 @@ class PokedexFragment : Fragment() {
             listAdapter.updateData(it.data)
         })
 
-        listAdapter.pokemonToNavigateTo.observe(viewLifecycleOwner, Observer { pokemon ->
-            if(pokemon != null) {
-                PokemonDetailFragment
-                    .newInstance(pokemon)
-                    .show(childFragmentManager, PokemonDetailFragment.TAG)
-
-                listAdapter.clearActivePokemonId()
-            }
-        })
+//        listAdapter.pokemonToNavigateTo.observe(viewLifecycleOwner, Observer { pokemon ->
+//            if(pokemon != null) {
+//                PokemonDetailFragment
+//                    .newInstance(pokemon)
+//                    .show(childFragmentManager, PokemonDetailFragment.TAG)
+//
+//                listAdapter.clearActivePokemonId()
+//            }
+//        })
 
 
         viewModel.pokemon

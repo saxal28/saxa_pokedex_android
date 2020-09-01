@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const jsonPath = "/Users/alansax/development/saxapokedex/app/src/main/json"
+const jsonPath = "/Users/alansax/development/saxapokedex/app/src/main/assets/"
 
 const log = (message) => console.log(`\n===================\n\n${message}.....\n\n===================\n`)
 
@@ -45,20 +45,21 @@ function createAllPokemonDetailJson(allPokemon, allPokemonWithDetails, allPokemo
         const pokemonDetail = allPokemonWithDetails[index]
         const pokemonSpecies = allPokemonWithSpeciesDetails[index]
 
-        const { name, id, order, game_indices, sprites, types, height, weight, base_experience, moves, stats } = pokemonDetail
+        const { name, id, order, game_indices, sprites, types, height, weight, base_experience, moves, stats, abilities } = pokemonDetail
 
-        const { base_happiness, capture_rate, egg_groups, flavor_text_entries, evolution_chain, evolves_from_species } = pokemonSpecies
+        const { base_happiness, capture_rate, egg_groups, flavor_text_entries, evolution_chain, evolves_from_species, gender_rate, hatch_rate } = pokemonSpecies
 
         const {versions, ...restSprites} = sprites 
 
         const data = {
             name, id, order, height, weight, base_experience,
-            base_happiness, capture_rate, 
+            base_happiness, capture_rate, gender_rate, hatch_rate,
             
             sprites: restSprites, 
             types, 
             egg_groups, 
             stats,
+            abilities,
             game_indices,
             moves,
             flavor_text_entries, 
@@ -67,7 +68,7 @@ function createAllPokemonDetailJson(allPokemon, allPokemonWithDetails, allPokemo
 
         data.evolution_chain_fetched = await fetchPokemonEvolutionData(evolution_chain.url)
 
-        createJSONFile(`/pokemon-${id}.json`, data)
+        createJSONFile(`api-v2-pokemon-${id}.json`, data)
     })
 }
 
@@ -89,12 +90,12 @@ function createAllPokemonListJson(allPokemon, allPokemonWithDetails) {
         })
     })
 
-    createJSONFile("/pokemon.json", mapped)
+    createJSONFile("api-v2-pokemon.json", mapped)
 }
 
 function createJSONFile(url, resultData) {
     const pokemonJsonPath = jsonPath + url
-    const data = JSON.stringify({ result: resultData }, null, 2)
+    const data = JSON.stringify({ results: resultData }, null, 2)
 
     fs.writeFileSync(pokemonJsonPath, data)
 
