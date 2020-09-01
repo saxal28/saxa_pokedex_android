@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.api.model.PokemonSpecies
 import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailAboutBinding
@@ -26,33 +27,39 @@ class PokemonDetailAboutFragment: Fragment() {
     ): View? {
         binding = FragmentPokemonDetailAboutBinding.inflate(LayoutInflater.from(context))
 
-        sharedViewModel.loadPokemonSpecieDetailsById.observe(viewLifecycleOwner, Observer {
-
-            binding.loader.visibility =  when(it.loading) {
-                LoadingStatus.LOADING -> View.VISIBLE
-                LoadingStatus.FINISHED -> View.GONE
-                else -> View.GONE
-            }
-
-            if(it.data != null) {
-                setupUI(it.data)
-            }
-
-            if(it.errorMessage != null) {
-                Log.i("ABOUT | ERROR", it.errorMessage!!)
+        sharedViewModel.pokemon.observe(viewLifecycleOwner, Observer { pokemon ->
+            if(pokemon != null) {
+                setupUI(pokemon)
             }
         })
+
+//        sharedViewModel.loadPokemonSpecieDetailsById.observe(viewLifecycleOwner, Observer {
+//
+//            binding.loader.visibility =  when(it.loading) {
+//                LoadingStatus.LOADING -> View.VISIBLE
+//                LoadingStatus.FINISHED -> View.GONE
+//                else -> View.GONE
+//            }
+//
+//            if(it.data != null) {
+//                setupUI(it.data)
+//            }
+//
+//            if(it.errorMessage != null) {
+//                Log.i("ABOUT | ERROR", it.errorMessage!!)
+//            }
+//        })
 
         return binding.root
     }
 
-    private fun setupUI(pokemonSpecieData: PokemonSpecies) {
-        binding.description = pokemonSpecieData.defaultFlavorText
-        binding.percentFemale = pokemonSpecieData.femalePercentage
-        binding.percentMale = pokemonSpecieData.malePercentage
+    private fun setupUI(pokemon: PokemonDetail) {
+        binding.description = pokemon.defaultFlavorText
+        binding.percentFemale = pokemon.femalePercentage
+        binding.percentMale = pokemon.malePercentage
 
         binding.height = sharedViewModel.pokemon.value?.displayHeight
         binding.weight = sharedViewModel.pokemon.value?.displayWeight
-        binding.eggGroup = pokemonSpecieData.displayEggGroup
+        binding.eggGroup = pokemon.displayEggGroup
     }
 }

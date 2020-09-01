@@ -47,13 +47,13 @@ function createAllPokemonDetailJson(allPokemon, allPokemonWithDetails, allPokemo
 
         const { name, id, order, game_indices, sprites, types, height, weight, base_experience, moves, stats, abilities } = pokemonDetail
 
-        const { base_happiness, capture_rate, egg_groups, flavor_text_entries, evolution_chain, evolves_from_species, gender_rate, hatch_rate } = pokemonSpecies
+        const { base_happiness, capture_rate, egg_groups, flavor_text_entries, evolution_chain, evolves_from_species, gender_rate, hatch_rate, hatch_counter } = pokemonSpecies
 
         const {versions, ...restSprites} = sprites 
 
         const data = {
             name, id, order, height, weight, base_experience,
-            base_happiness, capture_rate, gender_rate, hatch_rate,
+            base_happiness, capture_rate, gender_rate, hatch_rate, hatch_counter,
             
             sprites: restSprites, 
             types, 
@@ -80,22 +80,24 @@ function createAllPokemonListJson(allPokemon, allPokemonWithDetails) {
         const {name, id, order, game_indices, sprites, types} = pokemonDetail
         const {versions, ...restSprites} = sprites 
 
-        return ({
+        return ( {
             name,
             id,
             order,
-            game_indices, 
+            game_indices,
             sprites: restSprites,
             types
-        })
+         })
     })
 
-    createJSONFile("api-v2-pokemon.json", mapped)
+    createJSONFile("api-v2-pokemon.json", {
+        results: mapped
+    })
 }
 
 function createJSONFile(url, resultData) {
     const pokemonJsonPath = jsonPath + url
-    const data = JSON.stringify({ results: resultData }, null, 2)
+    const data = JSON.stringify(resultData, null, 2)
 
     fs.writeFileSync(pokemonJsonPath, data)
 

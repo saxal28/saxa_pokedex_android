@@ -6,24 +6,24 @@ import kotlin.math.roundToInt
 
 @JsonClass(generateAdapter = true)
 data class EvolutionDetails(
-    val gender: String,
-    val held_item: String,
-    val item: String,
-    val known_move: String,
-    val known_move_type: String,
-    val location: String,
-    val min_affection: String,
-    val min_beauty: String,
-    val min_happiness: String,
-    val min_level: Int,
-    val needs_overworld_rain: Boolean,
-    val party_species: String,
-    val party_type: String,
-    val relative_physical_stats: String,
-    val time_of_day: String,
-    val trade_species: String,
-    val trigger: NameUrl,
-    val turn_upside_down: Boolean
+    val gender: String? = null,
+    val held_item: String? = null,
+    val item: String? = null,
+    val known_move: String? = null,
+    val known_move_type: String? = null,
+    val location: String? = null,
+    val min_affection: String? = null,
+    val min_beauty: String? = null,
+    val min_happiness:  String? = null,
+    val min_level: Int? = null,
+    val needs_overworld_rain: Boolean? = null,
+    val party_species:  String? = null,
+    val party_type:  String? = null,
+    val relative_physical_stats:  String? = null,
+    val time_of_day:  String? = null,
+    val trade_species:  String? = null,
+    val trigger: NameUrl? = null,
+    val turn_upside_down: Boolean? = null
 )
 
 @JsonClass(generateAdapter = true)
@@ -124,4 +124,22 @@ data class PokemonDetail(
 
             return "${feet}\' ${inchesDisplay}\" ($centimeters cm)"
         }
+
+    private val IS_SEXLESS = -1
+
+    // gender_rate is based on an eighth (1/8 === 12.5% Female)
+    private val baseGender = 8.00
+    val femalePercentage = if (gender_rate == IS_SEXLESS) "--" else {
+        "${(gender_rate.toDouble() / baseGender) * 100}%"
+    }
+
+    val malePercentage = if (gender_rate == IS_SEXLESS) "--" else {
+        "${((baseGender - gender_rate) / baseGender) * 100}%"
+    }
+
+    val defaultFlavorText = flavor_text_entries
+        .last { it.language.name == "en" }.flavor_text
+        .replace(Regex("\n"), " ")
+
+    val displayEggGroup = egg_groups.joinToString(", ") { it.name.capitalize() }
 }

@@ -10,7 +10,9 @@ import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
 import saxal.me.saxapokedex.R
+import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.model.Pokemon
+import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.data.PokemonTypeResource
 import saxal.me.saxapokedex.data.PokemonTypeResources
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailBinding
@@ -22,7 +24,7 @@ class PokemonDetailFragment : DialogFragment() {
         const val POKEMON_TYPE = "pokemon_type"
         const val TAG = "POKEMON_DETAILS"
 
-        fun newInstance(pokemon: Pokemon): PokemonDetailFragment {
+        fun newInstance(pokemon: JsonPokemon): PokemonDetailFragment {
             return PokemonDetailFragment().apply {
                 arguments = Bundle().apply {
                     putInt(POKEMON_ID, pokemon.id)
@@ -50,7 +52,7 @@ class PokemonDetailFragment : DialogFragment() {
             setupPokemonDetailsUI(binding, args.getString(POKEMON_TYPE)!!)
         }
 
-        sharedViewModel.loadPokemonById.observe(viewLifecycleOwner, Observer { pokeResult ->
+        sharedViewModel.loadPokemonDetails.observe(viewLifecycleOwner, Observer { pokeResult ->
             if (pokeResult.data != null) {
                 sharedViewModel.pokemon.value = pokeResult.data
                 setupText(binding, pokeResult.data)
@@ -101,7 +103,7 @@ class PokemonDetailFragment : DialogFragment() {
         binding.pokemonType2View.setBackgroundResource(resource.tagResourceId)
     }
 
-    private fun setupText(binding: FragmentPokemonDetailBinding, pokemon: Pokemon) {
+    private fun setupText(binding: FragmentPokemonDetailBinding, pokemon: PokemonDetail) {
         binding.pokemonImageUrl = pokemon.sprites.other.official_artwork.front_default
         binding.pokemonName = pokemon.displayName
         binding.pokemonType = pokemon.displayPrimaryType

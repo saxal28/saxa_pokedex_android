@@ -9,6 +9,7 @@ import saxal.me.saxapokedex.api.CacheService
 import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.pokeService
 import saxal.me.saxapokedex.api.model.Pokemon
+import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.util.Timestamp
 import java.lang.Exception
@@ -18,7 +19,7 @@ import java.util.concurrent.ConcurrentLinkedQueue
 class PokedexRepository {
 
     // TODO: making design decision to fetch generated JSON pokemon
-    val listPokemon = liveData<PokeListResult<JsonPokemon>> {
+    val listPokemon = liveData {
         emit(PokeListResult(loading = LoadingStatus.LOADING))
         try {
             val pokemon = pokeService.listPokemon().await()
@@ -32,6 +33,19 @@ class PokedexRepository {
                     errorMessage = e.message ?: "Error!"
                 )
             )
+        }
+    }
+
+    fun getPokemonDetailsById(pokemonId: Int) = liveData {
+        emit(PokeResult(loading = LoadingStatus.LOADING))
+
+        try {
+            val pokemon = pokeService.getPokemonInfo(pokemonId).await()
+            emit(PokeResult(loading = LoadingStatus.FINISHED, data = pokemon))
+
+        } catch (e: Exception) {
+            Log.e("GET", "e: $e")
+            emit(PokeResult(errorMessage = e.message ?: "Error!"))
         }
     }
 

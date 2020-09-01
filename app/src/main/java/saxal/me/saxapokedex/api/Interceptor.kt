@@ -24,7 +24,7 @@ class MockJsonInterceptor: Interceptor {
             val responseBody = MainActivity.contextInstance!!.assets.open(filename).bufferedReader().use { it.readText() }
 
             Log.d(TAG, "Using mock data for ${uri.path}")
-//            Log.d(TAG, "mock data $responseBody")
+            Log.d(TAG, "mock data $responseBody")
 
             return Response.Builder()
                 .code(200)
