@@ -70,6 +70,8 @@ class PokemonDetailFragment : DialogFragment() {
 
         binding.pokemonDetailPager.setCurrentItem(0, false)
 
+        dialog?.window?.setWindowAnimations(R.style.DialogAnimation)
+
         return binding.root
     }
 
