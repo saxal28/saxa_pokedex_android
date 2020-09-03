@@ -99,6 +99,13 @@
         <include
             android:visibility="invisible"
             android:id="@+id/loader" layout="@layout/page_loader" />
+
+        <include
+            android:id="@+id/emptyListView"
+            android:visibility="gone"
+            layout="@layout/empty_list"
+            />
+
     </RelativeLayout>
 
 </layout>

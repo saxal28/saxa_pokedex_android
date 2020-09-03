@@ -24,6 +24,7 @@ class PokedexFragment : Fragment() {
 
     private lateinit var listAdapter: PokedexListAdapter
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private lateinit var binding: FragmentPokedexBinding
 
     private val viewModel: PokedexViewModel by viewModels()
 
@@ -32,7 +33,7 @@ class PokedexFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentPokedexBinding.inflate(inflater)
+        binding = FragmentPokedexBinding.inflate(inflater)
 
         viewManager = GridLayoutManager(activity, 2)
         listAdapter = PokedexListAdapter(viewModel.pokemonResult.value?.data ?: listOf())
@@ -66,6 +67,11 @@ class PokedexFragment : Fragment() {
 
             viewModel.allPokemon.value = it.data
             listAdapter.updateData(it.data)
+
+            binding.emptyListView.visibility = if(it.data.isEmpty()) View.VISIBLE else View.GONE
+
+            // TODO: handle filters here
+            viewModel.searchText.value = "charmander"
         })
 
         listAdapter.pokemonToNavigateTo.observe(viewLifecycleOwner, Observer { pokemon ->
@@ -84,12 +90,17 @@ class PokedexFragment : Fragment() {
 
         viewModel.searchPokemon.observe(viewLifecycleOwner, Observer {
             listAdapter.updateData(it)
+            binding.emptyListView.visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
         })
 
         viewModel.searchText.observe(viewLifecycleOwner, Observer {
             viewModel.searchPokemon()
             binding.customInputButtonRight.isVisible = it.isNotBlank()
         })
+
+        binding.customInputButtonRight.setOnClickListener { viewModel.searchText.value = "" }
+
+        // hide keyboard on scroll
 
         binding.pokedexListView.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {
@@ -100,10 +111,6 @@ class PokedexFragment : Fragment() {
                 }
             }
         )
-
-        binding.customInputButtonRight.setOnClickListener {
-            viewModel.searchText.value = ""
-        }
 
         return binding.root
     }
