@@ -11,11 +11,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_pokedex.*
 import saxal.me.saxapokedex.R
 import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokedexBinding
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailFragment
 import saxal.me.saxapokedex.util.ItemOffsetDecoration
+import saxal.me.saxapokedex.util.hideKeyboard
 
 class PokedexFragment : Fragment() {
 
@@ -32,13 +34,16 @@ class PokedexFragment : Fragment() {
         val binding = FragmentPokedexBinding.inflate(inflater)
 
         viewManager = GridLayoutManager(activity, 2)
-        listAdapter = PokedexListAdapter(viewModel.pokemon.value?.data ?: listOf())
+        listAdapter = PokedexListAdapter(viewModel.pokemonResult.value?.data ?: listOf())
 
         val itemDecoration =
             ItemOffsetDecoration(
                 requireContext(),
                 R.dimen.item_offset
             )
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
         binding.pokedexListView.apply {
             layoutManager = viewManager
@@ -49,7 +54,7 @@ class PokedexFragment : Fragment() {
             addItemDecoration(itemDecoration)
         }
 
-        viewModel.pokemon.observe(viewLifecycleOwner, Observer {
+        viewModel.pokemonResult.observe(viewLifecycleOwner, Observer {
             Log.e("STATUS", it.loading)
 
             binding.loader.visibility =  when(it.loading) {
@@ -58,6 +63,7 @@ class PokedexFragment : Fragment() {
                 else -> View.GONE
             }
 
+            viewModel.allPokemon.value = it.data
             listAdapter.updateData(it.data)
         })
 
@@ -71,9 +77,21 @@ class PokedexFragment : Fragment() {
             }
         })
 
+        viewModel.searchPokemon.observe(viewLifecycleOwner, Observer {
+            listAdapter.updateData(it)
+        })
 
-        viewModel.pokemon
+        viewModel.searchText.observe(viewLifecycleOwner, Observer { viewModel.searchPokemon() })
 
+        binding.pokedexListView.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                        binding.pokedexListView.hideKeyboard()
+                    }
+                }
+            }
+        )
 
         return binding.root
     }

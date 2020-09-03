@@ -1,20 +1,11 @@
 package saxal.me.saxapokedex.api.repository
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import kotlinx.coroutines.*
 import retrofit2.*
-import saxal.me.saxapokedex.api.CacheService
-import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.pokeService
-import saxal.me.saxapokedex.api.model.Pokemon
-import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.constants.LoadingStatus
-import saxal.me.saxapokedex.util.Timestamp
 import java.lang.Exception
-import java.util.concurrent.ConcurrentLinkedQueue
-
 
 class PokedexRepository {
 
@@ -24,7 +15,8 @@ class PokedexRepository {
         try {
             val pokemon = pokeService.listPokemon().await()
             Log.i("MockJsonInterceptor", pokemon.results.toString())
-            emit(PokeListResult(loading = LoadingStatus.FINISHED, data = pokemon.results))
+            val results = pokemon.results.filter { it.id <= 10000 }
+            emit(PokeListResult(loading = LoadingStatus.FINISHED, data = results))
         } catch (e: Exception) {
             Log.d("ERROR", e.message.toString())
             emit(
@@ -44,7 +36,8 @@ class PokedexRepository {
             emit(PokeResult(loading = LoadingStatus.FINISHED, data = pokemon))
 
         } catch (e: Exception) {
-            Log.e("GET", "e: $e")
+            Log.e("ERROR $pokemonId", "e: $e")
+            Log.e("ERROR", "e: $e")
             emit(PokeResult(errorMessage = e.message ?: "Error!"))
         }
     }
@@ -105,42 +98,42 @@ class PokedexRepository {
 //    }
 
     // GET / Pokemon by Id
-    fun getPokemonById(pokemonId: Int): LiveData<PokeResult<Pokemon>> = liveData {
-        emit(PokeResult(loading = LoadingStatus.LOADING))
-
-        try {
-            val pokemon = CacheService.getPokemonById(pokemonId)
-            emit(PokeResult(loading = LoadingStatus.FINISHED, data = pokemon))
-
-        } catch (e: Exception) {
-            Log.e("GET", "e: $e")
-            emit(PokeResult(errorMessage = e.message ?: "Error!"))
-        }
-    }
+//    fun getPokemonById(pokemonId: Int): LiveData<PokeResult<Pokemon>> = liveData {
+//        emit(PokeResult(loading = LoadingStatus.LOADING))
+//
+//        try {
+//            val pokemon = CacheService.getPokemonById(pokemonId)
+//            emit(PokeResult(loading = LoadingStatus.FINISHED, data = pokemon))
+//
+//        } catch (e: Exception) {
+//            Log.e("GET", "e: $e")
+//            emit(PokeResult(errorMessage = e.message ?: "Error!"))
+//        }
+//    }
 
     // GET POKEMON SPECIES DETAILS
-    fun getPokemonSpecieDetails(pokemonId: Int) = liveData {
-        try {
-
-            emit(PokeResult(loading = LoadingStatus.LOADING))
-
-            // Find cached version, if exists and emit
-            val foundPokemonSpecies = CacheService.getPokemonSpecies(pokemonId)
-
-            if (foundPokemonSpecies != null) {
-                Log.i("SPECIES", "loading from disk")
-                emit(PokeResult(loading = LoadingStatus.FINISHED, data = foundPokemonSpecies))
-            } else {
-                Log.i("SPECIES", "loading from api and saving")
-                val details = pokeService.getPokemonSpecies(pokemonId).await()
-                CacheService.savePokemonSpecies(details.mapToEntity(pokemonId))
-                emit(PokeResult(loading = LoadingStatus.FINISHED, data = details))
-            }
-
-        } catch (e: Exception) {
-            Log.e("GET", "e: $e")
-            emit(PokeResult(errorMessage = e.message ?: "Error!"))
-        }
-    }
+//    fun getPokemonSpecieDetails(pokemonId: Int) = liveData {
+//        try {
+//
+//            emit(PokeResult(loading = LoadingStatus.LOADING))
+//
+//            // Find cached version, if exists and emit
+//            val foundPokemonSpecies = CacheService.getPokemonSpecies(pokemonId)
+//
+//            if (foundPokemonSpecies != null) {
+//                Log.i("SPECIES", "loading from disk")
+//                emit(PokeResult(loading = LoadingStatus.FINISHED, data = foundPokemonSpecies))
+//            } else {
+//                Log.i("SPECIES", "loading from api and saving")
+//                val details = pokeService.getPokemonSpecies(pokemonId).await()
+//                CacheService.savePokemonSpecies(details.mapToEntity(pokemonId))
+//                emit(PokeResult(loading = LoadingStatus.FINISHED, data = details))
+//            }
+//
+//        } catch (e: Exception) {
+//            Log.e("GET", "e: $e")
+//            emit(PokeResult(errorMessage = e.message ?: "Error!"))
+//        }
+//    }
 
 }
