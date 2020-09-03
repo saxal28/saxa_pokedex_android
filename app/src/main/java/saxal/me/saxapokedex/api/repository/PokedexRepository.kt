@@ -14,11 +14,18 @@ class PokedexRepository {
         emit(PokeListResult(loading = LoadingStatus.LOADING))
         try {
             val pokemon = pokeService.listPokemon().await()
+
             Log.i("MockJsonInterceptor", pokemon.results.toString())
-            val results = pokemon.results.filter { it.id <= 10000 }
+
+            val otherPokemonForms = 10000
+
+            val results = pokemon.results
+                .filter { it.id <= otherPokemonForms && it.order != -1 }
+                .sortedBy { it.order }
+
             emit(PokeListResult(loading = LoadingStatus.FINISHED, data = results))
         } catch (e: Exception) {
-            Log.d("ERROR", e.message.toString())
+            Log.d("ERROR", "Fetch All Pokemon $e")
             emit(
                 PokeListResult(
                     loading = LoadingStatus.FINISHED,
@@ -36,8 +43,7 @@ class PokedexRepository {
             emit(PokeResult(loading = LoadingStatus.FINISHED, data = pokemon))
 
         } catch (e: Exception) {
-            Log.e("ERROR $pokemonId", "e: $e")
-            Log.e("ERROR", "e: $e")
+            Log.e("ERROR $pokemonId", "Get Pokemon Details By Id: $e")
             emit(PokeResult(errorMessage = e.message ?: "Error!"))
         }
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -77,11 +78,18 @@ class PokedexFragment : Fragment() {
             }
         })
 
+        // ==================
+        // search
+        // ==================
+
         viewModel.searchPokemon.observe(viewLifecycleOwner, Observer {
             listAdapter.updateData(it)
         })
 
-        viewModel.searchText.observe(viewLifecycleOwner, Observer { viewModel.searchPokemon() })
+        viewModel.searchText.observe(viewLifecycleOwner, Observer {
+            viewModel.searchPokemon()
+            binding.customInputButtonRight.isVisible = it.isNotBlank()
+        })
 
         binding.pokedexListView.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {
@@ -92,6 +100,10 @@ class PokedexFragment : Fragment() {
                 }
             }
         )
+
+        binding.customInputButtonRight.setOnClickListener {
+            viewModel.searchText.value = ""
+        }
 
         return binding.root
     }
