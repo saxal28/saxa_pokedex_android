@@ -4,11 +4,11 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class PokedexPokemonResults(
-    val results: List<JsonPokemon>
+    val results: List<Pokemon>
 )
 
 @JsonClass(generateAdapter = true)
-data class JsonPokemon(
+data class Pokemon(
     val id: Int,
     val name: String,
     val types: List<Types>,
@@ -19,7 +19,9 @@ data class JsonPokemon(
     val primaryType = types[0].type.name
     val secondaryType = types.getOrNull(1)?.type?.name
 
+    // ======================
     // ui
+    // ======================
 
     val displayPrimaryType
         get() = primaryType.capitalize()

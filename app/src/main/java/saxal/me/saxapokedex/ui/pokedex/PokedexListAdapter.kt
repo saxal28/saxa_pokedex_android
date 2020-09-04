@@ -5,18 +5,17 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.data.PokemonTypeResource
 import saxal.me.saxapokedex.data.PokemonTypeResources
 import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
 
 
-class PokedexListAdapter(private var data: List<JsonPokemon>) :
+class PokedexListAdapter(private var data: List<Pokemon>) :
     RecyclerView.Adapter<PokedexListAdapter.ViewHolder>() {
 
-    private val _pokemonToNavigateTo: MutableLiveData<JsonPokemon?> = MutableLiveData(null)
-    val pokemonToNavigateTo: LiveData<JsonPokemon?>
+    private val _pokemonToNavigateTo: MutableLiveData<Pokemon?> = MutableLiveData(null)
+    val pokemonToNavigateTo: LiveData<Pokemon?>
         get() = _pokemonToNavigateTo
 
     fun clearActivePokemonId() {
@@ -38,7 +37,7 @@ class PokedexListAdapter(private var data: List<JsonPokemon>) :
 
     inner class ViewHolder(private val binding: ListPokedexTileBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(pokemon: JsonPokemon) {
+        fun bind(pokemon: Pokemon) {
 
             binding.title = pokemon.displayName
             binding.id = pokemon.displayId
@@ -55,7 +54,7 @@ class PokedexListAdapter(private var data: List<JsonPokemon>) :
         }
     }
 
-    fun updateData(updated: List<JsonPokemon>) {
+    fun updateData(updated: List<Pokemon>) {
         data = updated
         notifyDataSetChanged()
     }

@@ -1,7 +1,6 @@
 package saxal.me.saxapokedex.ui.pokemondetail.pokemonabout
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import saxal.me.saxapokedex.api.model.PokemonDetail
-import saxal.me.saxapokedex.api.model.PokemonSpecies
-import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailAboutBinding
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel
 
@@ -32,23 +29,6 @@ class PokemonDetailAboutFragment: Fragment() {
                 setupUI(pokemon)
             }
         })
-
-//        sharedViewModel.loadPokemonSpecieDetailsById.observe(viewLifecycleOwner, Observer {
-//
-//            binding.loader.visibility =  when(it.loading) {
-//                LoadingStatus.LOADING -> View.VISIBLE
-//                LoadingStatus.FINISHED -> View.GONE
-//                else -> View.GONE
-//            }
-//
-//            if(it.data != null) {
-//                setupUI(it.data)
-//            }
-//
-//            if(it.errorMessage != null) {
-//                Log.i("ABOUT | ERROR", it.errorMessage!!)
-//            }
-//        })
 
         return binding.root
     }

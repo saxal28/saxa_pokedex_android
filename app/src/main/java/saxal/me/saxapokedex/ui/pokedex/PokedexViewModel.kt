@@ -1,10 +1,9 @@
 package saxal.me.saxapokedex.ui.pokedex
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import saxal.me.saxapokedex.api.model.JsonPokemon
+import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.api.repository.PokedexRepository
 
 class PokedexViewModel : ViewModel() {
@@ -12,8 +11,8 @@ class PokedexViewModel : ViewModel() {
 
     val pokemonResult = pokedexRepo.listPokemon
 
-    val allPokemon: MutableLiveData<List<JsonPokemon>> =  MutableLiveData(emptyList())
-    val searchPokemon: MutableLiveData<List<JsonPokemon>> = MutableLiveData(emptyList())
+    val allPokemon: MutableLiveData<List<Pokemon>> =  MutableLiveData(emptyList())
+    val searchPokemon: MutableLiveData<List<Pokemon>> = MutableLiveData(emptyList())
 
     val searchText= MutableLiveData("")
 
