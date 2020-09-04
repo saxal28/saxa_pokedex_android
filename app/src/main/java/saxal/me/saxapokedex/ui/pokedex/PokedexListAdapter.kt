@@ -4,19 +4,33 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.data.PokemonTypeResource
 import saxal.me.saxapokedex.data.PokemonTypeResources
 import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
 
 
-class PokedexListAdapter(private var data: List<JsonPokemon>) :
+class PokkedexListAdapterDiff(private val oldList: List<Pokemon>, private val newList: List<Pokemon>): DiffUtil.Callback(){
+    override fun getOldListSize() = oldList.size
+    override fun getNewListSize() = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int) = oldList[oldItemPosition].id == newList[newItemPosition].id
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val (id, value) = oldList[oldItemPosition]
+        val (id1, value1) = newList[newItemPosition]
+
+        return id == id1 && value == value1
+    }
+}
+
+class PokedexListAdapter(private var data: List<Pokemon>) :
     RecyclerView.Adapter<PokedexListAdapter.ViewHolder>() {
 
-    private val _pokemonToNavigateTo: MutableLiveData<JsonPokemon?> = MutableLiveData(null)
-    val pokemonToNavigateTo: LiveData<JsonPokemon?>
+    private val _pokemonToNavigateTo: MutableLiveData<Pokemon?> = MutableLiveData(null)
+    val pokemonToNavigateTo: LiveData<Pokemon?>
         get() = _pokemonToNavigateTo
 
     fun clearActivePokemonId() {
@@ -38,7 +52,7 @@ class PokedexListAdapter(private var data: List<JsonPokemon>) :
 
     inner class ViewHolder(private val binding: ListPokedexTileBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(pokemon: JsonPokemon) {
+        fun bind(pokemon: Pokemon) {
 
             binding.title = pokemon.displayName
             binding.id = pokemon.displayId
@@ -55,9 +69,11 @@ class PokedexListAdapter(private var data: List<JsonPokemon>) :
         }
     }
 
-    fun updateData(updated: List<JsonPokemon>) {
+    fun updateData(updated: List<Pokemon>) {
+        val diffCallback = PokkedexListAdapterDiff(data, updated)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
         data = updated
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     private fun setupUI(

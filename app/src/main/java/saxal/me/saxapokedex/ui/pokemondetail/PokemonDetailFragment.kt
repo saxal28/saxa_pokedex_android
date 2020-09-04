@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
 import saxal.me.saxapokedex.R
-import saxal.me.saxapokedex.api.model.JsonPokemon
 import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.data.PokemonTypeResource
@@ -24,7 +23,7 @@ class PokemonDetailFragment : DialogFragment() {
         const val POKEMON_TYPE = "pokemon_type"
         const val TAG = "POKEMON_DETAILS"
 
-        fun newInstance(pokemon: JsonPokemon): PokemonDetailFragment {
+        fun newInstance(pokemon: Pokemon): PokemonDetailFragment {
             return PokemonDetailFragment().apply {
                 arguments = Bundle().apply {
                     putInt(POKEMON_ID, pokemon.id)

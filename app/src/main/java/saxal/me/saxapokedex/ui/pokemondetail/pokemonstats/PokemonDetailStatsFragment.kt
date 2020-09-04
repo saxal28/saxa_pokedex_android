@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailStatsBinding
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel

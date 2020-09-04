@@ -1,18 +1,12 @@
 package saxal.me.saxapokedex.api
 
-import android.app.Application
-import android.content.Context
 import android.util.Log
 import okhttp3.*
-import saxal.me.saxapokedex.BuildConfig
 import saxal.me.saxapokedex.MainActivity
-import saxal.me.saxapokedex.R
-import java.io.File
+
+// intercepts API to return mock json generated from node script
 
 class MockJsonInterceptor: Interceptor {
-    init {
-        Log.i(TAG, "INIT")
-    }
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val uri = chain.request().url().uri()
@@ -24,7 +18,6 @@ class MockJsonInterceptor: Interceptor {
             val responseBody = MainActivity.contextInstance!!.assets.open(filename).bufferedReader().use { it.readText() }
 
             Log.d(TAG, "Using mock data for ${uri.path}")
-//            Log.d(TAG, "mock data $responseBody")
 
             return Response.Builder()
                 .code(200)
