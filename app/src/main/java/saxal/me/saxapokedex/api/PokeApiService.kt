@@ -3,16 +3,12 @@ package saxal.me.saxapokedex.api
 import retrofit2.Call
 import retrofit2.http.*
 import saxal.me.saxapokedex.api.model.PokedexPokemonResults
-import saxal.me.saxapokedex.api.model.Pokemon
-import saxal.me.saxapokedex.api.model.PokemonSpecies
+import saxal.me.saxapokedex.api.model.PokemonDetail
 
 interface PokeApiService {
-    @GET("pokemon?limit=151")
+    @GET("pokemon")
     fun listPokemon(): Call<PokedexPokemonResults>
 
-    @GET("pokemon/{name}")
-    fun getPokemonInfo(@Path("name") name: String): Call<Pokemon>
-
-    @GET("pokemon-species/{id}")
-    fun getPokemonSpecies(@Path("id") id: Int): Call<PokemonSpecies>
+    @GET("pokemon/{id}")
+    fun getPokemonInfo(@Path("id") name: Int): Call<PokemonDetail>
 }

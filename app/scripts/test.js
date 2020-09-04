@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const jsonPath = "/Users/alansax/development/saxapokedex/app/src/main/json"
+const jsonPath = "/Users/alansax/development/saxapokedex/app/src/main/assets/"
 
 const log = (message) => console.log(`\n===================\n\n${message}.....\n\n===================\n`)
 
@@ -10,13 +10,18 @@ const log = (message) => console.log(`\n===================\n\n${message}.....\n
 // ===================
 
 async function fetchUrl(url){
-    const pokemonDataResponse = await fetch(url)
-    const pokemonData = await pokemonDataResponse.json()
-    return pokemonData
+    try {
+        const pokemonDataResponse = await fetch(url)
+        const pokemonData = await pokemonDataResponse.json()
+        return pokemonData
+    } catch(e) {
+        console.log({e})
+        return {}
+    }
 }
 
 async function fetchAllPokemon() {
-    const allPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
+    const allPokemonResponse = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2000")
     const allPokemon = await allPokemonResponse.json()
     return allPokemon.results
 }
@@ -45,20 +50,21 @@ function createAllPokemonDetailJson(allPokemon, allPokemonWithDetails, allPokemo
         const pokemonDetail = allPokemonWithDetails[index]
         const pokemonSpecies = allPokemonWithSpeciesDetails[index]
 
-        const { name, id, order, game_indices, sprites, types, height, weight, base_experience, moves, stats } = pokemonDetail
+        const { name, id, order, game_indices, sprites, types, height, weight, base_experience, moves, stats, abilities } = pokemonDetail
 
-        const { base_happiness, capture_rate, egg_groups, flavor_text_entries, evolution_chain, evolves_from_species } = pokemonSpecies
+        const { base_happiness, capture_rate, egg_groups, flavor_text_entries, evolution_chain, evolves_from_species, gender_rate, hatch_rate, hatch_counter } = pokemonSpecies
 
         const {versions, ...restSprites} = sprites 
 
         const data = {
             name, id, order, height, weight, base_experience,
-            base_happiness, capture_rate, 
+            base_happiness, capture_rate, gender_rate, hatch_rate, hatch_counter,
             
             sprites: restSprites, 
             types, 
             egg_groups, 
             stats,
+            abilities,
             game_indices,
             moves,
             flavor_text_entries, 
@@ -67,7 +73,7 @@ function createAllPokemonDetailJson(allPokemon, allPokemonWithDetails, allPokemo
 
         data.evolution_chain_fetched = await fetchPokemonEvolutionData(evolution_chain.url)
 
-        createJSONFile(`/pokemon-${id}.json`, data)
+        createJSONFile(`api-v2-pokemon-${id}.json`, data)
     })
 }
 
@@ -79,22 +85,24 @@ function createAllPokemonListJson(allPokemon, allPokemonWithDetails) {
         const {name, id, order, game_indices, sprites, types} = pokemonDetail
         const {versions, ...restSprites} = sprites 
 
-        return ({
+        return ( {
             name,
             id,
             order,
-            game_indices, 
+            game_indices,
             sprites: restSprites,
             types
-        })
+         })
     })
 
-    createJSONFile("/pokemon.json", mapped)
+    createJSONFile("api-v2-pokemon.json", {
+        results: mapped
+    })
 }
 
 function createJSONFile(url, resultData) {
     const pokemonJsonPath = jsonPath + url
-    const data = JSON.stringify({ result: resultData }, null, 2)
+    const data = JSON.stringify(resultData, null, 2)
 
     fs.writeFileSync(pokemonJsonPath, data)
 

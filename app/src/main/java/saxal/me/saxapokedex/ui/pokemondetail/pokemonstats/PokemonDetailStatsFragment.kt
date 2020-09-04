@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import saxal.me.saxapokedex.api.model.Pokemon
+import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailStatsBinding
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel
 
@@ -34,7 +33,7 @@ class PokemonDetailStatsFragment: Fragment() {
         })
     }
 
-    private fun setupStats(pokemon: Pokemon) {
+    private fun setupStats(pokemon: PokemonDetail) {
         binding.statHp.statValue.text = pokemon.hpStat?.base_stat?.toString()
         binding.statAttack.statValue.text = pokemon.attackStat?.base_stat?.toString()
         binding.statDefense.statValue.text = pokemon.defenseStat?.base_stat?.toString()

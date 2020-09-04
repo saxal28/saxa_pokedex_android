@@ -2,23 +2,6 @@ package saxal.me.saxapokedex.api.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import saxal.me.saxapokedex.api.database.entity.PokemonEntity
-import saxal.me.saxapokedex.api.database.entity.PokemonSpritesEntity
-import saxal.me.saxapokedex.api.database.entity.PokemonStatsEntity
-import saxal.me.saxapokedex.api.database.entity.PokemonTypesEntity
-import saxal.me.saxapokedex.util.roundTo
-import kotlin.math.roundToInt
-
-@JsonClass(generateAdapter = true)
-data class PokedexPokemonResults(
-    val results: List<PokedexPokemon>
-)
-
-@JsonClass(generateAdapter = true)
-data class PokedexPokemon(
-    val name: String,
-    var url: String
-)
 
 
 // Types:
@@ -32,13 +15,7 @@ data class Type(
 data class Types(
     val slot: Int,
     var type: Type
-) {
-    fun mapToEntity(pokemonId: Int) = PokemonTypesEntity(
-        name = this.type.name,
-        url = this.type.url,
-        pokemonOwnerId = pokemonId.toLong()
-    )
-}
+)
 
 // Stats
 @JsonClass(generateAdapter = true)
@@ -48,7 +25,7 @@ data class Stat(
 )
 
 @JsonClass(generateAdapter = true)
-data class NameUrl(
+data class NamedApiResource(
     val name: String,
     var url: String
 )
@@ -59,14 +36,6 @@ data class Stats(
     var effort: Int,
     val stat: Stat
 ) {
-    fun mapToEntity(pokemonId: Int) = PokemonStatsEntity(
-        pokemonOwnerId = pokemonId.toLong(),
-        base_stat = this.base_stat,
-        effort = this.effort,
-        name = this.stat.name,
-        url = this.stat.url
-    )
-
     private val maxStat = 180.00
 
     val statPercentage: Double
@@ -77,8 +46,7 @@ data class Stats(
 @JsonClass(generateAdapter = true)
 data class SpritesOther(
     val dream_world: Sprite,
-    // TODO: fix for developer
-    @Json(name = "official-artwork")
+    @Json(name = "official-artwork")  // TODO: fix for developer
     val official_artwork: Sprite
 )
 
@@ -99,23 +67,7 @@ data class Sprites(
     val front_shiny: String? = null,
     val front_shiny_female: String? = null,
     val other: SpritesOther
-) {
-    fun mapToEntity(pokemonId: Int) = PokemonSpritesEntity(
-        pokemonOwnerId = pokemonId.toLong(),
-        back_default = this.back_default,
-        back_female = this.back_female,
-        back_shiny = this.back_shiny,
-        back_shiny_female = this.back_shiny_female,
-        front_default = this.front_default,
-        front_female = this.front_female,
-        front_shiny = this.front_shiny,
-        front_shiny_female = this.front_shiny_female,
-        dream_world_default = this.other.dream_world.front_default,
-        dream_world_female = this.other.dream_world.front_female,
-        official_artwork_default = this.other.official_artwork.front_default,
-        official_artwork_female = this.other.official_artwork.front_female
-    )
-}
+)
 
 @JsonClass(generateAdapter = true)
 data class Ability (
@@ -128,80 +80,3 @@ data class AbilityDetail (
     val ability: Ability,
     val is_hidden: Boolean
 )
-
-@JsonClass(generateAdapter = true)
-data class Pokemon(
-    val id: Int,
-    val name: String,
-    val types: List<Types>,
-    val stats: List<Stats>,
-    val sprites: Sprites,
-    val height: Int,
-    val weight: Int,
-    val order: Int,
-    val base_experience: Int,
-    val abilities: List<AbilityDetail>
-
-) {
-    fun mapToEntity() = PokemonEntity(
-        pokemonId = this.id.toLong(),
-        name = this.name,
-        weight = this.weight,
-        height = this.height,
-        order = this.order,
-        base_experience = this.base_experience
-    )
-
-    val primaryType = types[0].type.name
-    val secondaryType = types.getOrNull(1)?.type?.name
-
-    val hpStat = stats.find { it.stat.name == "hp" }
-    val attackStat = stats.find { it.stat.name == "attack" }
-    val defenseStat = stats.find { it.stat.name == "defense" }
-    val specialAttackStat = stats.find { it.stat.name == "special-attack" }
-    val specialDefenseStat = stats.find { it.stat.name == "special-defense" }
-    val speedStat = stats.find { it.stat.name == "speed" }
-
-    // ui
-
-    val displayPrimaryType
-        get() = primaryType.capitalize()
-
-    val displaySecondaryType
-        get() = secondaryType?.capitalize()
-
-    val displayId: String
-        get() = when (id.toString().length) {
-            1 -> "#00${id}"
-            2 -> "#0${id}"
-            else -> "#${id}"
-        }
-
-    val displayName: String
-        get() = name
-            .capitalize()
-//            .replace(Regex("-m"), "♂")
-//            .replace(Regex("-f"), "♀")
-
-    // weight is in hectograms
-    val displayWeight: String
-        get() {
-            val lbs = (weight.toDouble() / 4.5359237).roundTo(1)// there is 4.5 hecto per lbs
-            val kg = (weight.toDouble() / 10.0).roundTo(1) // 1kg === 10 hecto
-
-            return "$lbs lbs (${kg}kg)"
-        }
-
-    // height is in decimeters
-    val displayHeight: String
-    get() {
-        val totalInches = (height.toDouble() * 3.93701).roundTo(2)
-        val feet = (totalInches / 12).roundToInt()
-        val centimeters = (totalInches / 2.54).roundTo(2)
-        val inches = (totalInches % 12).roundToInt().toString()
-        val inchesDisplay = if(inches.length == 1) "0$inches" else inches
-
-        return "${feet}\' ${inchesDisplay}\" ($centimeters cm)"
-    }
-}
-
