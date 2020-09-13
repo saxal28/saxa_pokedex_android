@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailAboutBinding
+import saxal.me.saxapokedex.ui.GlobalViewModel
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel
 
 class PokemonDetailAboutFragment: Fragment() {
@@ -16,6 +17,7 @@ class PokemonDetailAboutFragment: Fragment() {
     lateinit var binding: FragmentPokemonDetailAboutBinding
 
     private val sharedViewModel: PokemonDetailViewModel by activityViewModels()
+    private val globalViewModel: GlobalViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +36,7 @@ class PokemonDetailAboutFragment: Fragment() {
     }
 
     private fun setupUI(pokemon: PokemonDetail) {
-        binding.description = pokemon.defaultFlavorText
+        binding.description = pokemon.getFlavorTextForVersion(globalViewModel.currentVersion)
         binding.percentFemale = pokemon.femalePercentage
         binding.percentMale = pokemon.malePercentage
 

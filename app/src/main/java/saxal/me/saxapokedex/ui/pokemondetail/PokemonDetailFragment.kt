@@ -1,6 +1,7 @@
 package saxal.me.saxapokedex.ui.pokemondetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.data.PokemonTypeResource
 import saxal.me.saxapokedex.data.PokemonTypeResources
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailBinding
+import saxal.me.saxapokedex.ui.GlobalViewModel
 
 class PokemonDetailFragment : DialogFragment() {
 
@@ -35,6 +37,7 @@ class PokemonDetailFragment : DialogFragment() {
 
     // shared viewmodel
     private val sharedViewModel: PokemonDetailViewModel by activityViewModels()
+    private val globalViewModel: GlobalViewModel by activityViewModels()
 
     lateinit var binding: FragmentPokemonDetailBinding
     private lateinit var adapter: DemoCollectionAdapter
@@ -53,21 +56,23 @@ class PokemonDetailFragment : DialogFragment() {
 
         sharedViewModel.loadPokemonDetails.observe(viewLifecycleOwner, Observer { pokeResult ->
             if (pokeResult.data != null) {
-                sharedViewModel.pokemon.value = pokeResult.data
-                setupText(binding, pokeResult.data)
+                val pokemon = pokeResult.data
+
+                sharedViewModel.pokemon.value = pokemon
+
+                setupText(binding, pokemon)
             }
         })
 
         // setup back button
-        binding.pokemonNavbar.backButton.setOnClickListener {
-            dismiss()
-        }
+        binding.pokemonNavbar.backButton.setOnClickListener { dismiss() }
 
         // set up pager
         adapter = DemoCollectionAdapter(this, sharedViewModel.pokemonId.value!!)
         binding.pokemonDetailPager.adapter = adapter
-
         binding.pokemonDetailPager.setCurrentItem(0, false)
+
+        binding.currentVersion.text = globalViewModel.currentVersion.capitalize()
 
         dialog?.window?.setWindowAnimations(R.style.DialogAnimation)
 
@@ -115,7 +120,6 @@ class PokemonDetailFragment : DialogFragment() {
     private fun setupPokemonDetailsUI(binding: FragmentPokemonDetailBinding, type: String) {
         val resource = PokemonTypeResources.forType(type)
         setupUIForType(binding, resource)
-
     }
 
 }

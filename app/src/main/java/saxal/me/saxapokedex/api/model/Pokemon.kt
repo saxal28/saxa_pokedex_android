@@ -12,6 +12,7 @@ data class Pokemon(
     val id: Int,
     val name: String,
     val types: List<Types>,
+    val game_indices: List<GameIndex>,
     val sprites: Sprites,
     val order: Int
 ) {

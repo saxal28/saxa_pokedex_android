@@ -47,6 +47,19 @@ data class GameIndex(
 )
 
 @JsonClass(generateAdapter = true)
+data class Moves(
+    val move: NamedApiResource,
+    var version_group_details: List<VersionGroupDetails>
+)
+
+@JsonClass(generateAdapter = true)
+data class VersionGroupDetails(
+    val level_learned_at: Int,
+    val move_learn_method: NamedApiResource,
+    val version_group: NamedApiResource
+)
+
+@JsonClass(generateAdapter = true)
 data class PokemonDetail(
     val name: String,
     val id: Int,
@@ -59,6 +72,7 @@ data class PokemonDetail(
 
     val sprites: Sprites,
     val types: List<Types>,
+    val moves: List<Moves>,
     val stats: List<Stats>,
 
     val gender_rate: Int,
@@ -69,7 +83,6 @@ data class PokemonDetail(
     val abilities: List<AbilityDetail>,
     val evolution_chain_fetched: EvolutionChainFetched,
 
-    // TODO: game indexes
     val game_indices: List<GameIndex>
 ) {
 
@@ -137,8 +150,8 @@ data class PokemonDetail(
         "${((baseGender - gender_rate) / baseGender) * 100}%"
     }
 
-    val defaultFlavorText = flavor_text_entries
-        .last { it.language.name == "en" }.flavor_text
+    fun getFlavorTextForVersion(versionName: String) = (flavor_text_entries
+        .firstOrNull { it.version.name == versionName}?.flavor_text ?: "...")
         .replace(Regex("\n"), " ")
 
     val displayEggGroup = egg_groups.joinToString(", ") { it.name.capitalize() }

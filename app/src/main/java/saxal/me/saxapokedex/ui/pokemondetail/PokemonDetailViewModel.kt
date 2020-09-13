@@ -1,6 +1,7 @@
 package saxal.me.saxapokedex.ui.pokemondetail
 
 import androidx.lifecycle.*
+import saxal.me.saxapokedex.api.model.Moves
 import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.api.repository.PokeResult
 import saxal.me.saxapokedex.api.repository.PokedexRepository

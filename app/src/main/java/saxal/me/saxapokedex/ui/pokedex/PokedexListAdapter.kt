@@ -12,6 +12,7 @@ import saxal.me.saxapokedex.data.PokemonTypeResources
 import saxal.me.saxapokedex.databinding.ListPokedexTileBinding
 
 
+// TODO: make generic
 class PokkedexListAdapterDiff(private val oldList: List<Pokemon>, private val newList: List<Pokemon>): DiffUtil.Callback(){
     override fun getOldListSize() = oldList.size
     override fun getNewListSize() = newList.size
@@ -91,3 +92,11 @@ class PokedexListAdapter(private var data: List<Pokemon>) :
         setupUI(binding, resource)
     }
 }
+
+
+
+
+
+
+
+

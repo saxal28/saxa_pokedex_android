@@ -7,15 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.R
+import saxal.me.saxapokedex.api.model.Pokemon
 import saxal.me.saxapokedex.constants.LoadingStatus
 import saxal.me.saxapokedex.databinding.FragmentPokedexBinding
+import saxal.me.saxapokedex.ui.GlobalViewModel
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailFragment
+import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel
 import saxal.me.saxapokedex.util.ItemOffsetDecoration
 import saxal.me.saxapokedex.util.hideKeyboard
 
@@ -26,6 +30,7 @@ class PokedexFragment : Fragment() {
     private lateinit var binding: FragmentPokedexBinding
 
     private val viewModel: PokedexViewModel by viewModels()
+    private val globalViewModel: GlobalViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +62,10 @@ class PokedexFragment : Fragment() {
             addItemDecoration(itemDecoration)
         }
 
+        fun filterByVersion(listPokemon: List<Pokemon>) = listPokemon
+            .filter { it.game_indices.firstOrNull { it.version.name == globalViewModel.currentVersion } != null }
+            .sortedBy { it.game_indices.find { it.version.name == globalViewModel.currentVersion }!!.game_index }
+
         viewModel.pokemonResult.observe(viewLifecycleOwner, Observer {
             Log.e("STATUS", it.loading)
 
@@ -66,13 +75,15 @@ class PokedexFragment : Fragment() {
                 else -> View.GONE
             }
 
-            viewModel.allPokemon.value = it.data
-            listAdapter.updateData(it.data)
+            // TODO: filter by version here
+            val filteredPokemon = filterByVersion(it.data)
+            viewModel.allPokemon.value = filteredPokemon
+            listAdapter.updateData(filteredPokemon)
 
             binding.emptyListView.visibility = if(it.data.isEmpty()) View.VISIBLE else View.GONE
 
-            // TODO: handle filters here
-            viewModel.searchText.value = "charmander"
+            // TODO: handle search text here
+//            viewModel.searchText.value = "charmander"
         })
 
         listAdapter.pokemonToNavigateTo.observe(viewLifecycleOwner, Observer { pokemon ->
@@ -99,7 +110,10 @@ class PokedexFragment : Fragment() {
             binding.customInputButtonRight.isVisible = it.isNotBlank()
         })
 
-        binding.customInputButtonRight.setOnClickListener { viewModel.searchText.value = "" }
+        binding.customInputButtonRight.setOnClickListener {
+            viewModel.searchText.value = ""
+            binding.pokedexListView.hideKeyboard()
+        }
 
         // hide keyboard on scroll
 
