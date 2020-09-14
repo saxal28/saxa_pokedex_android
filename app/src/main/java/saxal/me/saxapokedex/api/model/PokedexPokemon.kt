@@ -28,7 +28,9 @@ data class Stat(
 data class NamedApiResource(
     val name: String,
     var url: String
-)
+) {
+    fun formatName() = name.split("-").joinToString(" ") { it.capitalize() }
+}
 
 @JsonClass(generateAdapter = true)
 data class Stats(

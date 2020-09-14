@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailFormsBinding
-import saxal.me.saxapokedex.databinding.FragmentPokemonDetailStatsBinding
 
 class PokemonDetailFormsFragment: Fragment() {
     override fun onCreateView(

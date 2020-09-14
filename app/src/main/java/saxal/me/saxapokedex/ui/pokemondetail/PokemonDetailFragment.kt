@@ -1,13 +1,16 @@
 package saxal.me.saxapokedex.ui.pokemondetail
 
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.*
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_pokemon_detail.view.*
 import saxal.me.saxapokedex.R
@@ -72,11 +75,37 @@ class PokemonDetailFragment : DialogFragment() {
         binding.pokemonDetailPager.adapter = adapter
         binding.pokemonDetailPager.setCurrentItem(0, false)
 
+        binding.pokemonDetailPager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                resizeViewPager()
+            }
+        })
+
         binding.currentVersion.text = globalViewModel.currentVersion.capitalize()
 
         dialog?.window?.setWindowAnimations(R.style.DialogAnimation)
 
         return binding.root
+    }
+
+    // in order to get dynamically sized fragments in tabbar,
+    // have to resize view pager dynamically
+    fun resizeViewPager() {
+        Handler().postDelayed({
+            val view = adapter.currentFragment!!.view // ... get the view
+            val pager = binding.pokemonDetailPager
+            view?.post {
+                val wMeasureSpec = MeasureSpec.makeMeasureSpec(view.width, MeasureSpec.EXACTLY)
+                val hMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED)
+                view.measure(wMeasureSpec, hMeasureSpec)
+
+                pager.layoutParams = (pager.layoutParams as LinearLayout.LayoutParams).apply {
+                    this.height = view.measuredHeight
+                }
+            }
+        }, 100)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

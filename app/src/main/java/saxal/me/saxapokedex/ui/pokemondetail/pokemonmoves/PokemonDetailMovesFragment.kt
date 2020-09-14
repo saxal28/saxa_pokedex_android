@@ -1,14 +1,14 @@
 package saxal.me.saxapokedex.ui.pokemondetail.pokemonmoves
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import saxal.me.saxapokedex.api.model.Moves
-import saxal.me.saxapokedex.api.model.PokemonDetail
 import saxal.me.saxapokedex.databinding.FragmentPokemonDetailMovesBinding
 import saxal.me.saxapokedex.ui.GlobalViewModel
 import saxal.me.saxapokedex.ui.pokemondetail.PokemonDetailViewModel
@@ -17,6 +17,9 @@ class PokemonDetailMovesFragment : Fragment() {
     private val sharedViewModel: PokemonDetailViewModel by activityViewModels()
     private val globalViewModel: GlobalViewModel by activityViewModels()
 
+    private lateinit var listAdapter: PokemonMovesListAdapter
+    private lateinit var viewManager: RecyclerView.LayoutManager
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +27,13 @@ class PokemonDetailMovesFragment : Fragment() {
     ): View? {
         val binding = FragmentPokemonDetailMovesBinding.inflate(LayoutInflater.from(context))
 
-        binding.pokemonMovesTextView.text = generatePokemonMovesTest()
+        listAdapter =  PokemonMovesListAdapter(getVersionMovesForPokemon())
+        viewManager = LinearLayoutManager(context)
+
+        binding.movesRecycler.apply {
+            adapter = listAdapter
+            layoutManager = viewManager
+        }
 
         return binding.root
     }
@@ -60,7 +69,7 @@ class PokemonDetailMovesFragment : Fragment() {
         val moves = getVersionMovesForPokemon()
 
         return moves.joinToString(" ") {
-            var moveName = it.move.name
+            var moveName = it.move.name.split("-").map { it.capitalize() }.joinToString(" ")
             val learnedAtLevel = it.version_group_details.first().level_learned_at
 
             val howLearned: String = if (learnedAtLevel == 0) {

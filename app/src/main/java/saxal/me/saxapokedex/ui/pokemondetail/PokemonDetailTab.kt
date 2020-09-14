@@ -1,6 +1,5 @@
 package saxal.me.saxapokedex.ui.pokemondetail
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import saxal.me.saxapokedex.ui.pokemondetail.pokemonabout.PokemonDetailAboutFragment
@@ -13,10 +12,10 @@ class DemoCollectionAdapter(fragment: Fragment, pokemonId: Int) : FragmentStateA
 
     override fun getItemCount(): Int = 4
 
-    private var currentFragment: Fragment? = null
+    var currentFragment: Fragment? = null
 
     private val aboutFragment by lazy { PokemonDetailAboutFragment() }
-    private val statsFragment = PokemonDetailStatsFragment()
+    private val statsFragment by lazy { PokemonDetailStatsFragment() }
     private val formsFragment by lazy { PokemonDetailFormsFragment() }
     private val movesFragment by lazy { PokemonDetailMovesFragment() }
 
