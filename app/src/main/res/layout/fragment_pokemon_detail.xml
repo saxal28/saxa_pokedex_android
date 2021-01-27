@@ -120,15 +120,19 @@
 
                 <TextView
                     android:id="@+id/pokemonTypeView"
-                    style="@style/pokedex_tag"
+                    app:layout_constraintStart_toStartOf="@id/pokemonNameView"
+                    app:layout_constraintTop_toTopOf="@id/pokemonNameView"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
+                    android:textSize="15sp"
+
                     android:layout_marginTop="50dp"
                     android:text="@{pokemonType}"
-                    app:layout_constraintStart_toStartOf="@id/pokemonNameView"
-
-                    app:layout_constraintTop_toTopOf="@id/pokemonNameView"
-                    tools:text="Fire" />
+                    tools:text="Fire"
+                    style="@style/pokedex_tag"
+                    />
 
                 <TextView
                     android:id="@+id/pokemonType2View"
@@ -136,6 +140,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+
+                    android:textSize="15sp"
 
                     android:layout_marginTop="0dp"
                     android:text="@{pokemonType2}"

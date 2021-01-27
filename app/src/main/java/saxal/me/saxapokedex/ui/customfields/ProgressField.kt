@@ -25,7 +25,7 @@ fun ProgressField.bindCheckboxFieldData(data: Double) {
     fun setWidth(percent: Double) {
         val width = binding.statValueTrack.measuredWidth * percent
         val density = resources.displayMetrics.density.toDouble()
-        val height = (20 * density).toInt()
+        val height = (5 * density).toInt()
 
         if(width > 0.0) {
             binding.statValue.layoutParams = ConstraintLayout.LayoutParams(width.toInt(), height)

@@ -2,6 +2,7 @@ package saxal.me.saxapokedex.ui.pokemondetail
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.*
@@ -79,7 +80,7 @@ class PokemonDetailFragment : DialogFragment() {
             ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                resizeViewPager()
+                resizeViewPager(position)
             }
         })
 
@@ -92,9 +93,9 @@ class PokemonDetailFragment : DialogFragment() {
 
     // in order to get dynamically sized fragments in tabbar,
     // have to resize view pager dynamically
-    fun resizeViewPager() {
+    fun resizeViewPager(position: Int) {
         Handler().postDelayed({
-            val view = adapter.currentFragment!!.view // ... get the view
+            val view = adapter.fragments[position].view // ... get the view
             val pager = binding.pokemonDetailPager
             view?.post {
                 val wMeasureSpec = MeasureSpec.makeMeasureSpec(view.width, MeasureSpec.EXACTLY)
@@ -102,10 +103,10 @@ class PokemonDetailFragment : DialogFragment() {
                 view.measure(wMeasureSpec, hMeasureSpec)
 
                 pager.layoutParams = (pager.layoutParams as LinearLayout.LayoutParams).apply {
-                    this.height = view.measuredHeight
+                    this.height = view.measuredHeight + 100
                 }
             }
-        }, 100)
+        }, 10)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -96,6 +96,9 @@ data class PokemonDetail(
     val specialDefenseStat = stats.find { it.stat.name == "special-defense" }
     val speedStat = stats.find { it.stat.name == "speed" }
 
+    val allStats = stats.sumBy { it.base_stat }.toDouble()
+    val allStatPercentage = allStats / (stats.size * 180)
+
     // ui
 
     val displayPrimaryType

@@ -29,10 +29,14 @@
         <variable
             name="speedProgress"
             type="Double" />
+
+        <variable
+            name="allStatsProgress"
+            type="Double" />
     </data>
 
     <LinearLayout
-        android:paddingHorizontal="20dp"
+        android:paddingHorizontal="40dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -72,6 +76,19 @@
             bind:name="@{@string/stat_speed}"
             bind:progress="@{speedProgress}"
             layout="@layout/stat"/>
+
+        <include
+            android:id="@+id/stat_total"
+            bind:name="@{@string/stat_total}"
+            bind:progress="@{allStatsProgress}"
+            layout="@layout/stat"/>
+
+        <TextView
+            style="@style/detail_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/type_defenses" />
 
     </LinearLayout>
 </layout>

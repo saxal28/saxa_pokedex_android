@@ -40,6 +40,7 @@ class PokemonDetailStatsFragment: Fragment() {
         binding.statSpecialAttack.statValue.text = pokemon.specialAttackStat?.base_stat?.toString()
         binding.statSpecialDefense.statValue.text = pokemon.specialDefenseStat?.base_stat?.toString()
         binding.statSpeed.statValue.text = pokemon.speedStat?.base_stat?.toString()
+        binding.statTotal.statValue.text = pokemon.allStats.toInt().toString()
 
         binding.hpProgress = pokemon.hpStat?.statPercentage ?: 0.00
         binding.attackProgress = pokemon.attackStat?.statPercentage ?: 0.00
@@ -47,5 +48,6 @@ class PokemonDetailStatsFragment: Fragment() {
         binding.specialAttackProgress = pokemon.specialAttackStat?.statPercentage ?: 0.00
         binding.specialDefenseProgress = pokemon.specialDefenseStat?.statPercentage ?: 0.00
         binding.speedProgress = pokemon.speedStat?.statPercentage ?: 0.00
+        binding.allStatsProgress = pokemon.allStatPercentage
     }
 }

@@ -41,7 +41,8 @@ data class Stats(
     private val maxStat = 180.00
 
     val statPercentage: Double
-        get() =  base_stat.toDouble() / maxStat
+        get() = base_stat.toDouble() / maxStat
+
 }
 
 // Sprites
